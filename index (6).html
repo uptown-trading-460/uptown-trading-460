@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uptown Trading 460 CC | Company Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Montserrat', sans-serif; color: #222; line-height: 1.6; background: #f5f5f5; }
+
+  /* COLORS */
+  :root {
+    --red: #C8202A;
+    --dark: #1A1A2E;
+    --light: #f8f8f8;
+    --gold: #D4A017;
+  }
+
+  /* NAVIGATION */
+  nav {
+    position: fixed; top: 0; width: 100%; background: rgba(26,26,46,0.95);
+    z-index: 1000; padding: 15px 40px; display: flex; justify-content: space-between;
+    align-items: center; backdrop-filter: blur(10px);
+  }
+  nav .brand { color: white; font-weight: 900; font-size: 18px; letter-spacing: 1px; }
+  nav .brand span { color: var(--red); }
+  nav ul { display: flex; list-style: none; gap: 25px; }
+  nav ul a { color: white; text-decoration: none; font-size: 13px; font-weight: 500;
+    transition: color 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+  nav ul a:hover { color: var(--red); }
+  .menu-toggle { display: none; color: white; font-size: 24px; cursor: pointer; background: none; border: none; }
+
+  /* COVER PAGE */
+  .cover {
+    min-height: 100vh; background: linear-gradient(135deg, #fff 0%, #fff 60%, var(--red) 60%, var(--red) 100%);
+    display: flex; align-items: center; justify-content: center; padding: 80px 40px 40px;
+    position: relative; overflow: hidden;
+  }
+  .cover-content { max-width: 1200px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .cover-left h1 {
+    font-family: 'Playfair Display', serif; font-size: 80px; font-weight: 900;
+    color: var(--dark); line-height: 0.9; letter-spacing: -2px;
+  }
+  .cover-left h1 span { display: block; border-bottom: 4px solid var(--red); padding-bottom: 10px; }
+  .cover-left h2 {
+    font-size: 60px; font-weight: 300; color: var(--dark); margin-top: 10px; letter-spacing: 8px;
+  }
+  .cover-left .tagline {
+    margin-top: 30px; font-size: 14px; color: #555; max-width: 400px;
+    border-left: 3px solid var(--red); padding-left: 15px;
+  }
+  .cover-left .contact-bar {
+    margin-top: 40px; padding: 20px; background: var(--dark); color: white;
+    border-radius: 4px; font-size: 13px; max-width: 400px;
+  }
+  .cover-left .contact-bar div { margin: 4px 0; display: flex; align-items: center; gap: 10px; }
+  .cover-left .contact-bar svg { width: 14px; height: 14px; fill: var(--red); }
+
+  .cover-right { display: flex; justify-content: center; align-items: center; flex-direction: column; }
+  .logo-box {
+    background: white; padding: 40px; border-radius: 8px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.3); transform: rotate(-3deg);
+    transition: transform 0.5s;
+  }
+  .logo-box:hover { transform: rotate(0deg) scale(1.02); }
+
+  /* LOGO SVG STYLING */
+  .uptown-logo { width: 280px; height: auto; display: block; margin: 0 auto; }
+  .logo-tagline {
+    text-align: center; margin-top: 15px; font-weight: 700;
+    color: var(--dark); letter-spacing: 3px; font-size: 11px;
+  }
+
+  .skyline-deco {
+    position: absolute; bottom: 0; left: 0; width: 100%; height: 80px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 80'><path fill='%231A1A2E' d='M0,80 L0,40 L40,40 L40,20 L80,20 L80,50 L120,50 L120,30 L160,30 L160,10 L200,10 L200,40 L240,40 L240,25 L280,25 L280,45 L320,45 L320,15 L360,15 L360,40 L400,40 L400,30 L440,30 L440,55 L480,55 L480,20 L520,20 L520,40 L560,40 L560,30 L600,30 L600,10 L640,10 L640,35 L680,35 L680,50 L720,50 L720,25 L760,25 L760,40 L800,40 L800,15 L840,15 L840,30 L880,30 L880,45 L920,45 L920,20 L960,20 L960,35 L1000,35 L1000,50 L1040,50 L1040,25 L1080,25 L1080,40 L1120,40 L1120,30 L1160,30 L1160,45 L1200,45 L1200,80 Z'/></svg>") no-repeat bottom;
+    background-size: cover; opacity: 0.15; pointer-events: none;
+  }
+
+  /* SECTIONS */
+  section { padding: 80px 40px; max-width: 1200px; margin: 0 auto; }
+  .section-title {
+    text-align: center; margin-bottom: 60px;
+  }
+  .section-title h2 {
+    font-family: 'Playfair Display', serif; font-size: 42px; color: var(--dark);
+    position: relative; display: inline-block;
+  }
+  .section-title h2::after {
+    content: ''; position: absolute; bottom: -10px; left: 50%;
+    transform: translateX(-50%); width: 60px; height: 4px; background: var(--red);
+  }
+  .section-title p { color: #777; margin-top: 20px; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
+
+  /* SNAPSHOT */
+  .snapshot { background: white; padding: 50px; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
+  .snapshot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+  .snap-item {
+    border-left: 3px solid var(--red); padding: 10px 15px;
+  }
+  .snap-item .label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+  .snap-item .value { font-size: 15px; color: var(--dark); font-weight: 700; margin-top: 4px; }
+
+  /* EXECUTIVE SUMMARY */
+  #summary { background: white; }
+  .summary-text {
+    font-size: 16px; line-height: 1.9; color: #444; max-width: 900px; margin: 0 auto;
+    text-align: justify;
+  }
+  .summary-text strong { color: var(--red); }
+
+  /* VISION/MISSION */
+  .vmv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+  .vmv-card {
+    background: white; padding: 40px 30px; border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s; border-top: 4px solid var(--red);
+  }
+  .vmv-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+  .vmv-card .icon { font-size: 50px; margin-bottom: 20px; }
+  .vmv-card h3 { color: var(--dark); margin-bottom: 15px; font-size: 22px; }
+  .vmv-card p { color: #666; font-size: 14px; }
+  .vmv-card ul { list-style: none; text-align: left; margin-top: 10px; }
+  .vmv-card ul li { padding: 5px 0; font-size: 13px; color: #555; }
+  .vmv-card ul li::before { content: "✦ "; color: var(--red); font-weight: bold; }
+
+  /* SERVICES */
+  #services { background: var(--dark); color: white; max-width: 100%; padding: 80px 40px; }
+  #services .section-title h2 { color: white; }
+  #services .section-title p { color: #ccc; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
+  .service-card {
+    background: rgba(255,255,255,0.05); padding: 35px 25px; border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s;
+  }
+  .service-card:hover { background: var(--red); transform: translateY(-5px); }
+  .service-card .icon { font-size: 40px; margin-bottom: 15px; }
+  .service-card h3 { font-size: 18px; margin-bottom: 12px; color: white; }
+  .service-card ul { list-style: none; }
+  .service-card ul li { padding: 4px 0; font-size: 13px; color: #ddd; }
+  .service-card ul li::before { content: "▸ "; color: var(--red); font-weight: bold; }
+  .service-card:hover ul li::before { color: white; }
+
+  /* TRACK RECORD */
+  .track-table { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+  .track-section { padding: 30px; border-bottom: 1px solid #eee; }
+  .track-section h3 { color: var(--red); margin-bottom: 15px; font-size: 18px; display: flex; align-items: center; gap: 10px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  table th { background: var(--dark); color: white; padding: 12px; text-align: left; font-size: 12px; text-transform: uppercase; }
+  table td { padding: 12px; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
+  table tr:hover { background: #fafafa; }
+  .reference { font-size: 12px; color: #777; margin-top: 10px; font-style: italic; }
+
+  /* MANAGEMENT */
+  .mgmt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+  .mgmt-card {
+    background: white; padding: 40px; border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-left: 5px solid var(--red);
+  }
+  .mgmt-card h3 { color: var(--dark); margin-bottom: 20px; font-size: 22px; }
+  .mgmt-card .row { display: flex; padding: 8px 0; border-bottom: 1px dashed #eee; }
+  .mgmt-card .row .label { font-weight: 700; color: #555; width: 180px; font-size: 13px; }
+  .mgmt-card .row .value { color: #222; font-size: 13px; flex: 1; }
+
+  /* BANKING */
+  #banking .snapshot { background: linear-gradient(135deg, var(--dark) 0%, #333 100%); color: white; }
+  #banking .snap-item { border-left-color: var(--gold); }
+  #banking .snap-item .label { color: #aaa; }
+  #banking .snap-item .value { color: white; }
+
+  /* COMPLIANCE */
+  .compliance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
+  .compliance-item {
+    background: white; padding: 20px; border-radius: 8px; display: flex; align-items: center; gap: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s;
+  }
+  .compliance-item:hover { transform: scale(1.03); }
+  .compliance-item .check {
+    width: 35px; height: 35px; background: var(--red); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; flex-shrink: 0;
+  }
+  .compliance-item .text { font-size: 13px; color: var(--dark); font-weight: 600; }
+
+  /* WHY US */
+  #why { background: linear-gradient(135deg, var(--red) 0%, #a01820 100%); color: white; max-width: 100%; padding: 80px 40px; }
+  #why .section-title h2 { color: white; }
+  #why .section-title h2::after { background: white; }
+  #why .section-title p { color: #ffe5e5; }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
+  .why-card {
+    background: rgba(255,255,255,0.1); padding: 30px; border-radius: 8px;
+    backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);
+  }
+  .why-card .num { font-size: 40px; font-weight: 900; opacity: 0.4; }
+  .why-card h3 { font-size: 16px; margin: 10px 0; }
+  .why-card p { font-size: 13px; opacity: 0.9; }
+
+  /* CONTACT */
+  #contact { background: var(--dark); color: white; max-width: 100%; padding: 80px 40px; }
+  #contact .section-title h2 { color: white; }
+  .contact-card {
+    max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.05);
+    padding: 50px; border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.1);
+  }
+  .contact-card h3 { font-size: 28px; margin-bottom: 5px; }
+  .contact-card .role { color: var(--red); margin-bottom: 30px; letter-spacing: 2px; font-size: 13px; text-transform: uppercase; }
+  .contact-info { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; margin-top: 20px; }
+  .contact-info .item { padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px; }
+  .contact-info .item .lbl { font-size: 11px; color: var(--red); text-transform: uppercase; letter-spacing: 1px; }
+  .contact-info .item .val { color: white; margin-top: 5px; font-size: 14px; }
+
+  /* FOOTER */
+  footer { background: #0d0d1a; color: #888; text-align: center; padding: 30px; font-size: 12px; }
+  footer span { color: var(--red); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 15px 20px; }
+    nav ul { display: none; position: absolute; top: 60px; left: 0; right: 0;
+      background: var(--dark); flex-direction: column; padding: 20px; gap: 15px; }
+    nav ul.show { display: flex; }
+    .menu-toggle { display: block; }
+    .cover { padding: 100px 20px 60px; }
+    .cover-content { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .cover-left h1 { font-size: 50px; }
+    .cover-left h2 { font-size: 35px; letter-spacing: 4px; }
+    .cover-left .tagline, .cover-left .contact-bar { margin-left: auto; margin-right: auto; }
+    .snapshot-grid { grid-template-columns: 1fr; }
+    .vmv-grid, .mgmt-grid { grid-template-columns: 1fr; }
+    .contact-info { grid-template-columns: 1fr; }
+    section { padding: 60px 20px; }
+    .section-title h2 { font-size: 30px; }
+  }
+
+  /* PRINT */
+  @media print {
+    nav, .menu-toggle { display: none; }
+    section { page-break-inside: avoid; padding: 30px; }
+    .cover { min-height: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="brand">UPTOWN<span> TRADING 460</span></div>
+  <button class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('show')">☰</button>
+  <ul>
+    <li><a href="#summary">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#track">Track Record</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- COVER PAGE -->
+<div class="cover">
+  <div class="cover-content">
+    <div class="cover-left">
+      <h1><span>COMPANY</span></h1>
+      <h2>PROFILE</h2>
+      <div class="tagline">
+        Established 2005 — A proudly 100% Black-Owned South African Close Corporation specializing in Construction, Supply, Transport, Catering, Sewing & Landscaping.
+      </div>
+      <div class="contact-bar">
+        <div>📍 Portion 80, Doornkloof, Magaliesburg, 1791</div>
+        <div>📱 083 527 5278 | 014 577 5911</div>
+        <div>📧 collenlouis@gmail.com</div>
+      </div>
+    </div>
+    <div class="cover-right">
+      <div class="logo-box">
+        <!-- RECREATED UPTOWN LOGO -->
+        <svg class="uptown-logo" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- Dark "U" shape base -->
+          <path d="M 50 30 L 50 130 Q 50 170 110 170 Q 170 170 170 130 L 170 30 L 140 30 L 140 130 Q 140 145 110 145 Q 80 145 80 130 L 80 30 Z" fill="#1A1A3E"/>
+
+          <!-- Red building inside U -->
+          <rect x="85" y="60" width="50" height="85" fill="#C8202A"/>
+          <!-- Building windows (white) -->
+          <rect x="92" y="70" width="8" height="8" fill="white"/>
+          <rect x="106" y="70" width="8" height="8" fill="white"/>
+          <rect x="120" y="70" width="8" height="8" fill="white"/>
+          <rect x="92" y="85" width="8" height="8" fill="white"/>
+          <rect x="106" y="85" width="8" height="8" fill="white"/>
+          <rect x="120" y="85" width="8" height="8" fill="white"/>
+          <rect x="92" y="100" width="8" height="8" fill="white"/>
+          <rect x="106" y="100" width="8" height="8" fill="white"/>
+          <rect x="120" y="100" width="8" height="8" fill="white"/>
+          <rect x="92" y="115" width="8" height="8" fill="white"/>
+          <rect x="106" y="115" width="8" height="8" fill="white"/>
+          <rect x="120" y="115" width="8" height="8" fill="white"/>
+          <!-- Building roof triangle -->
+          <polygon points="85,60 110,40 135,60" fill="#1A1A3E"/>
+
+          <!-- PTOWN text -->
+          <text x="180" y="105" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" fill="#1A1A3E">PTOWN</text>
+
+          <!-- Red horizontal line -->
+          <line x1="50" y1="180" x2="380" y2="180" stroke="#C8202A" stroke-width="2"/>
+
+          <!-- Subtitle -->
+          <text x="180" y="195" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#1A1A3E" letter-spacing="3">TRADING 460CC</text>
+        </svg>
+        <div class="logo-tagline">EST. 2005 • LEVEL 1 B-BBEE</div>
+      </div>
+    </div>
+  </div>
+  <div class="skyline-deco"></div>
+</div>
+
+<!-- SNAPSHOT -->
+<section id="snapshot">
+  <div class="section-title">
+    <p>At a Glance</p>
+    <h2>Company Snapshot</h2>
+  </div>
+  <div class="snapshot">
+    <div class="snapshot-grid">
+      <div class="snap-item"><div class="label">Registration No.</div><div class="value">2005/011222/23</div></div>
+      <div class="snap-item"><div class="label">Tax Number</div><div class="value">9641874145</div></div>
+      <div class="snap-item"><div class="label">CSD Number</div><div class="value">R0071830797</div></div>
+      <div class="snap-item"><div class="label">Enterprise Type</div><div class="value">Close Corporation</div></div>
+      <div class="snap-item"><div class="label">Date Established</div><div class="value">02 February 2005</div></div>
+      <div class="snap-item"><div class="label">Status</div><div class="value">Active / In Business</div></div>
+      <div class="snap-item"><div class="label">B-BBEE Status</div><div class="value">Level 1 (135%)</div></div>
+      <div class="snap-item"><div class="label">Ownership</div><div class="value">100% Black Owned</div></div>
+      <div class="snap-item"><div class="label">Annual Turnover</div><div class="value">R10 Million or less (QSE)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXECUTIVE SUMMARY -->
+<section id="summary">
+  <div class="section-title">
+    <p>Who We Are</p>
+    <h2>Executive Summary</h2>
+  </div>
+  <p class="summary-text">
+    <strong>Uptown Trading 460 CC</strong> is a proudly South African, <strong>100% Black-Owned Close Corporation</strong> that has been in business since <strong>02 February 2005</strong> — giving the company nearly two decades of proven trading history.
+    <br><br>
+    Originally registered for "General Trading in All Aspects," the company evolved through formal CIPC amendments in 2013 and 2016 to specialize in <strong>Construction, Building Maintenance, Renovations, Repair, Transport, Supply, Catering, Sewing, and Landscaping</strong>.
+    <br><br>
+    Under the leadership of <strong>Mr. Collen Louis Maraba</strong>, who took 100% ownership on 27 October 2015, Uptown Trading 460 CC has successfully delivered services to numerous Government Departments — including <strong>Public Works, SAPS, Correctional Services, the Department of Higher Education & Training, SASSA, Mogale City Local Municipality, and the South African National Defence Force</strong>.
+    <br><br>
+    The company is fully tender-ready, registered on the National Treasury Central Supplier Database (CSD), and banks with First National Bank (FNB).
+  </p>
+</section>
+
+<!-- VISION MISSION VALUES -->
+<section id="vmv">
+  <div class="section-title">
+    <p>Our Foundation</p>
+    <h2>Vision, Mission & Values</h2>
+  </div>
+  <div class="vmv-grid">
+    <div class="vmv-card">
+      <div class="icon">🎯</div>
+      <h3>Our Vision</h3>
+      <p>To be the leading multi-disciplinary service provider in South Africa, recognized for excellence, reliability, and the empowerment of local communities through quality service delivery.</p>
+    </div>
+    <div class="vmv-card">
+      <div class="icon">🚀</div>
+      <h3>Our Mission</h3>
+      <p>To deliver high-quality construction, supply, transport, catering, sewing, and landscaping solutions that exceed client expectations while contributing to South Africa's economic transformation.</p>
+    </div>
+    <div class="vmv-card">
+      <div class="icon">💎</div>
+      <h3>Core Values</h3>
+      <ul>
+        <li>Integrity</li>
+        <li>Quality</li>
+        <li>Empowerment</li>
+        <li>Reliability</li>
+        <li>Safety</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-title">
+    <p>What We Do</p>
+    <h2>Our Core Services</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="icon">🏗️</div>
+      <h3>Construction & Building</h3>
+      <ul>
+        <li>General Building Construction</li>
+        <li>Maintenance Works</li>
+        <li>Renovations & Refurbishments</li>
+        <li>Structural & General Repairs</li>
+        <li>Building Gutters Erection</li>
+        <li>Ablution Systems</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="icon">🚧</div>
+      <h3>Civil Works</h3>
+      <ul>
+        <li>Road Works</li>
+        <li>Sewage Tank Maintenance</li>
+        <li>Cemetery Facilities</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="icon">🚚</div>
+      <h3>Transport & Logistics</h3>
+      <ul>
+        <li>Goods Transportation</li>
+        <li>Distribution Services</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="icon">📦</div>
+      <h3>General Supply</h3>
+      <ul>
+        <li>Government Supply Contracts</li>
+        <li>Office Supplies & Tools</li>
+        <li>General Procurement</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="icon">🍽️</div>
+      <h3>Catering Services</h3>
+      <ul>
+        <li>Corporate Catering</li>
+        <li>Event & Functions Catering</li>
+        <li>Conference Catering</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="icon">✂️</div>
+      <h3>Sewing & Textiles</h3>
+      <ul>
+        <li>Uniform Manufacturing</li>
+        <li>Protective Clothing (PPE)</li>
+        <li>Branded Apparel</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="icon">🌳</div>
+      <h3>Landscaping</h3>
+      <ul>
+        <li>Garden Design & Installation</li>
+        <li>Grounds Maintenance</li>
+        <li>Site Beautification</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TRACK RECORD -->
+<section id="track">
+  <div class="section-title">
+    <p>Proven Experience</p>
+    <h2>Track Record</h2>
+  </div>
+  <div class="track-table">
+    <div class="track-section">
+      <h3>🇿🇦 Department of Public Works</h3>
+      <table>
+        <tr><th>Service Rendered</th><th>Location</th></tr>
+        <tr><td>Sewage – Emptying of Tanks</td><td>Magaliesburg Police Station</td></tr>
+        <tr><td>Sewage Services</td><td>Tarlton Police Station</td></tr>
+        <tr><td>Sewage Services</td><td>Krugersdorp Police Station</td></tr>
+        <tr><td>Sewage Services</td><td>Honeydew Police Station</td></tr>
+        <tr><td>Road Works</td><td>Magaliesburg Police Station</td></tr>
+        <tr><td>Supply</td><td>Krugersdorp Prison Services</td></tr>
+        <tr><td>Supply</td><td>SA Eagle House</td></tr>
+        <tr><td>Supply</td><td>Brits Prison Services</td></tr>
+        <tr><td>Maintenance, Construction & Repair</td><td>Krugersdorp Prison Services</td></tr>
+        <tr><td>Maintenance, Construction & Repair</td><td>Heidelberg Military Base</td></tr>
+        <tr><td>Maintenance, Construction & Repair (V1CR3)</td><td>Lenasia Military Base</td></tr>
+      </table>
+      <div class="reference">📞 Reference: Margaret – (011) 713 6234</div>
+    </div>
+
+    <div class="track-section">
+      <h3>🎓 Department of Higher Education & Training</h3>
+      <table>
+        <tr><th>Service</th><th>Location</th><th>Order No.</th><th>Value</th></tr>
+        <tr><td>Supply</td><td>INDLELA</td><td>N1690 / 007428</td><td>R152,562.00</td></tr>
+      </table>
+      <div class="reference">📞 Reference: 012 031 25134</div>
+    </div>
+
+    <div class="track-section">
+      <h3>🏛️ South African Social Security Agency (SASSA)</h3>
+      <table>
+        <tr><th>Service</th><th>Location</th></tr>
+        <tr><td>Maintenance & Renovating Supply</td><td>SASSA – Randfontein</td></tr>
+        <tr><td>Maintenance & Renovating Supply</td><td>SASSA – Krugersdorp</td></tr>
+      </table>
+    </div>
+
+    <div class="track-section">
+      <h3>🏘️ Mogale City Local Municipality</h3>
+      <table>
+        <tr><th>Service</th><th>Financial Year</th></tr>
+        <tr><td>Erecting DIEM Offices Building Gutters</td><td>2016/17</td></tr>
+        <tr><td>Repairing & Replacing Kagiso Cemetery Ablution System</td><td>2016/17</td></tr>
+      </table>
+      <div class="reference">📞 Reference: Lindiwe Mabaso – (011) 951 2125 / 081 400 9122 (Verified by Letter of Acknowledgement, 09 May 2018)</div>
+    </div>
+  </div>
+</section>
+
+<!-- MANAGEMENT -->
+<section id="management">
+  <div class="section-title">
+    <p>Leadership</p>
+    <h2>Management & Governance</h2>
+  </div>
+  <div class="mgmt-grid">
+    <div class="mgmt-card">
+      <h3>👤 Founder & Sole Member</h3>
+      <div class="row"><div class="label">Full Name</div><div class="value">Collen Louis Maraba</div></div>
+      <div class="row"><div class="label">ID Number</div><div class="value">7601025276088</div></div>
+      <div class="row"><div class="label">Position</div><div class="value">Founder / Sole Member</div></div>
+      <div class="row"><div class="label">Member Contribution</div><div class="value">R100.00 (100%)</div></div>
+      <div class="row"><div class="label">Date Appointed</div><div class="value">27 October 2015</div></div>
+      <div class="row"><div class="label">Postal Address</div><div class="value">P.O. Box 438, Magaliesburg, 1791</div></div>
+    </div>
+    <div class="mgmt-card">
+      <h3>📊 Accounting Officer</h3>
+      <div class="row"><div class="label">Firm</div><div class="value">Schutte en Jacobs CC</div></div>
+      <div class="row"><div class="label">Profession</div><div class="value">SAIPA Registered</div></div>
+      <div class="row"><div class="label">Practice Number</div><div class="value">PRAC721</div></div>
+      <div class="row"><div class="label">Postal Address</div><div class="value">P.O. Box 1232, Rustenburg, 0300</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BANKING -->
+<section id="banking">
+  <div class="section-title">
+    <p>Verified by FNB</p>
+    <h2>Banking Details</h2>
+  </div>
+  <div class="snapshot">
+    <div class="snapshot-grid">
+      <div class="snap-item"><div class="label">Account Holder</div><div class="value">Uptown Trading 460 CC</div></div>
+      <div class="snap-item"><div class="label">Bank</div><div class="value">First National Bank (FNB)</div></div>
+      <div class="snap-item"><div class="label">Account Type</div><div class="value">Business Account</div></div>
+      <div class="snap-item"><div class="label">Account Number</div><div class="value">62080773221</div></div>
+      <div class="snap-item"><div class="label">Branch Code</div><div class="value">250241</div></div>
+      <div class="snap-item"><div class="label">Branch Name</div><div class="value">Krugersdorp, TVL</div></div>
+      <div class="snap-item"><div class="label">Swift Code</div><div class="value">FIRNZAJJ</div></div>
+      <div class="snap-item"><div class="label">Date Opened</div><div class="value">30 March 2005</div></div>
+      <div class="snap-item"><div class="label">Status</div><div class="value">Active</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section id="compliance">
+  <div class="section-title">
+    <p>Fully Compliant</p>
+    <h2>Statutory Compliance</h2>
+  </div>
+  <div class="compliance-grid">
+    <div class="compliance-item"><div class="check">✓</div><div class="text">CIPC Registered & Active</div></div>
+    <div class="compliance-item"><div class="check">✓</div><div class="text">SARS Tax Registered</div></div>
+    <div class="compliance-item"><div class="check">✓</div><div class="text">CSD Active Supplier</div></div>
+    <div class="compliance-item"><div class="check">✓</div><div class="text">FNB Business Account</div></div>
+    <div class="compliance-item"><div class="check">✓</div><div class="text">B-BBEE Level 1 (135%)</div></div>
+    <div class="compliance-item"><div class="check">✓</div><div class="text">100% Black Owned</div></div>
+    <div class="compliance-item"><div class="check">✓</div><div class="text">SAIPA Accounting Officer</div></div>
+    <div class="compliance-item"><div class="check">✓</div><div class="text">QSE Status</div></div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-title">
+    <p>The Difference</p>
+    <h2>Why Choose Us?</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card"><div class="num">01</div><h3>20 Years Experience</h3><p>Established in 2005, with two decades of proven service delivery.</p></div>
+    <div class="why-card"><div class="num">02</div><h3>Maximum B-BBEE Points</h3><p>Level 1 / 135% Procurement Recognition boosts your scorecard.</p></div>
+    <div class="why-card"><div class="num">03</div><h3>Government Track Record</h3><p>Trusted by Public Works, SAPS, SANDF, SASSA, DHET & municipalities.</p></div>
+    <div class="why-card"><div class="num">04</div><h3>Multi-Disciplinary</h3><p>One service provider for construction, supply, catering & more.</p></div>
+    <div class="why-card"><div class="num">05</div><h3>Tender Ready</h3><p>CSD registered, FNB banked, and fully compliant.</p></div>
+    <div class="why-card"><div class="num">06</div><h3>Owner-Managed</h3><p>Direct accountability from the Founder, every step of the way.</p></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-title">
+    <p>Get in Touch</p>
+    <h2>Contact Us</h2>
+  </div>
+  <div class="contact-card">
+    <h3>Mr. Collen Louis Maraba</h3>
+    <div class="role">Founder & Managing Member</div>
+    <div class="contact-info">
+      <div class="item"><div class="lbl">Mobile</div><div class="val">083 527 5278</div></div>
+      <div class="item"><div class="lbl">Telephone</div><div class="val">014 577 5911 / 5910</div></div>
+      <div class="item"><div class="lbl">Email</div><div class="val">collenlouis@gmail.com</div></div>
+      <div class="item"><div class="lbl">Postal</div><div class="val">P.O. Box 438, Magaliesburg, 1791</div></div>
+      <div class="item" style="grid-column: 1 / -1;"><div class="lbl">Physical Address</div><div class="val">Portion 80, Doornkloof, Magaliesburg, North West, 1791</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2025 <span>Uptown Trading 460 CC</span> | Reg. 2005/011222/23 | All Rights Reserved
+  <br><br>
+  Designed as a tender-ready company portfolio.
+</footer>
+
+<script>
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      document.querySelector('nav ul').classList.remove('show');
+    });
+  });
+</script>
+
+</body>
+</html>
