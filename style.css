@@ -1,6 +1,6 @@
 /* ================================================
    UPTOWN TRADING 460 CC - COMPANY PORTFOLIO
-   Complete Stylesheet | GitHub Pages Ready
+   Complete Stylesheet | UPDATED with better spacing
    ================================================ */
 
 :root {
@@ -299,8 +299,12 @@ img { max-width: 100%; display: block; }
 }
 .track-ref i { color: var(--red); margin-right: 5px; }
 
-/* TEAM */
-.team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+/* TEAM (THREE COLUMNS) */
+.team-grid-three {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
 .team-card {
     background: white; padding: 45px 35px; border-radius: var(--radius);
     box-shadow: var(--shadow); text-align: center; transition: var(--transition);
@@ -313,6 +317,7 @@ img { max-width: 100%; display: block; }
     font-size: 32px; color: white;
 }
 .team-avatar.secondary { background: var(--dark); }
+.team-avatar.accent { background: linear-gradient(135deg, #C8202A 0%, #1A1A2E 100%); }
 .team-card h3 { font-size: 22px; color: var(--dark); margin-bottom: 5px; }
 .team-role { font-size: 13px; color: var(--red); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
 .team-details { margin-top: 25px; text-align: left; }
@@ -384,136 +389,30 @@ img { max-width: 100%; display: block; }
 .why-card h3 { font-size: 18px; margin: 10px 0; }
 .why-card p { font-size: 14px; opacity: 0.85; line-height: 1.7; }
 
-/* CONTACT */
-.contact-info-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-    max-width: 900px; margin: 0 auto;
-}
-.contact-card-item {
-    background: rgba(255,255,255,0.05); padding: 35px 25px; border-radius: var(--radius);
-    text-align: center; border: 1px solid rgba(255,255,255,0.08); transition: var(--transition);
-}
-.contact-card-item:hover { background: rgba(255,255,255,0.1); transform: translateY(-5px); }
-.contact-icon {
-    width: 55px; height: 55px; background: var(--red); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;
-    font-size: 20px; color: white;
-}
-.contact-card-item h4 { color: white; font-size: 16px; margin-bottom: 8px; }
-.contact-card-item p { color: rgba(255,255,255,0.7); font-size: 14px; margin: 3px 0; }
-.contact-card-item p a { color: rgba(255,255,255,0.9); transition: var(--transition); }
-.contact-card-item p a:hover { color: var(--red); }
-
-/* FOOTER */
-footer { background: #0d0d1a; color: rgba(255,255,255,0.6); }
-.footer-container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
-.footer-top {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 40px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-.footer-brand { display: flex; align-items: center; gap: 15px; }
-.footer-logo { width: 35px; }
-.footer-brand strong { color: white; display: block; font-size: 14px; }
-.footer-brand span { font-size: 11px; }
-.footer-links { display: flex; gap: 25px; }
-.footer-links a { font-size: 13px; transition: var(--transition); }
-.footer-links a:hover { color: var(--red); }
-.footer-bottom { padding: 25px 0; text-align: center; font-size: 13px; }
-
-/* BACK TO TOP */
-.back-to-top {
-    position: fixed; bottom: 30px; right: 30px; width: 45px; height: 45px;
-    background: var(--red); color: white; border: none; border-radius: 50%;
-    cursor: pointer; font-size: 16px; opacity: 0; visibility: hidden;
-    transition: var(--transition); z-index: 999; box-shadow: 0 5px 20px rgba(200,32,42,0.3);
-}
-.back-to-top.visible { opacity: 1; visibility: visible; }
-.back-to-top:hover { background: var(--red-dark); transform: translateY(-3px); }
-
-/* ANIMATIONS */
-[data-animate] { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
-[data-animate="slide-right"] { transform: translateX(-50px); }
-[data-animate="slide-left"] { transform: translateX(50px); }
-[data-animate].animated { opacity: 1; transform: translate(0, 0); }
-
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-    .cover-content { grid-template-columns: 1fr; text-align: center; }
-    .cover-left .badge { justify-content: center; }
-    .cover-left h2 { letter-spacing: 8px; }
-    .cover-desc { margin: 0 auto; }
-    .cover-stats { justify-content: center; }
-    .cover-buttons { justify-content: center; }
-    .cover-right { order: -1; }
-    .main-logo { width: 280px; }
-    .about-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 768px) {
-    .menu-toggle { display: flex; }
-    .nav-links {
-        display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(26,26,46,0.98); flex-direction: column; justify-content: center;
-        align-items: center; gap: 25px; z-index: 999;
-    }
-    .nav-links.show { display: flex; }
-    .nav-links a { font-size: 18px; }
-
-    .cover-left .line-1, .cover-left .line-3 { font-size: 55px; }
-    .cover-left .line-2 { font-size: 38px; }
-    .cover-stats { flex-direction: column; gap: 20px; }
-    .cover-buttons { flex-direction: column; align-items: center; }
-
-    .section { padding: 70px 0; }
-    .section-title { font-size: 30px; }
-    .snapshot-grid { grid-template-columns: 1fr; }
-    .vmv-grid { grid-template-columns: 1fr; }
-    .team-grid { grid-template-columns: 1fr; }
-    .banking-grid { grid-template-columns: 1fr; }
-    .contact-info-grid { grid-template-columns: 1fr; }
-    .footer-top { flex-direction: column; gap: 20px; text-align: center; }
-    .footer-links { flex-wrap: wrap; justify-content: center; }
-    .main-logo { width: 250px; }
-    .logo-card { padding: 25px 30px; }
-}
-
-@media (max-width: 480px) {
-    .cover-left .line-1, .cover-left .line-3 { font-size: 42px; }
-    .cover-left .line-2 { font-size: 28px; }
-    .section-title { font-size: 26px; }
-    .cover-left h2 { letter-spacing: 5px; font-size: 14px; }
-}
-/* ================================================
-   NEW: KEY CONTACTS (Two-Person Section)
-   ================================================ */
-
-.team-grid-three {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-
-.team-avatar.accent {
-    background: linear-gradient(135deg, #C8202A 0%, #1A1A2E 100%);
-}
+/* ============================================
+   CONTACT SECTION - KEY CONTACTS (UPDATED)
+   ============================================ */
 
 .key-contacts {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    max-width: 900px;
-    margin: 0 auto 60px;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto 70px;
 }
 
 .key-contact-card {
     background: rgba(255,255,255,0.05);
     border: 2px solid rgba(255,255,255,0.1);
-    border-radius: var(--radius);
-    padding: 45px 35px;
+    border-radius: 16px;
+    padding: 60px 45px;          /* Increased padding for breathing room */
     text-align: center;
     transition: var(--transition);
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .key-contact-card::before {
@@ -534,88 +433,186 @@ footer { background: #0d0d1a; color: rgba(255,255,255,0.6); }
     transform: translateY(-10px);
     border-color: var(--red);
     background: rgba(255,255,255,0.08);
-    box-shadow: 0 20px 50px rgba(200,32,42,0.2);
+    box-shadow: 0 25px 60px rgba(200,32,42,0.25);
 }
 
+/* Avatar - bigger spacing */
 .kc-avatar {
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
     background: var(--red);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 36px;
+    font-size: 40px;
     color: white;
-    margin: 0 auto 20px;
-    box-shadow: 0 10px 30px rgba(200,32,42,0.3);
+    margin-bottom: 30px;          /* Increased spacing below avatar */
+    box-shadow: 0 12px 35px rgba(200,32,42,0.35);
+    transition: var(--transition);
 }
 
 .kc-avatar.accent {
     background: linear-gradient(135deg, #C8202A 0%, #1A1A2E 100%);
 }
 
-.kc-name {
-    font-size: 24px;
-    font-weight: 800;
-    color: white;
-    margin-bottom: 8px;
-    font-family: 'Playfair Display', serif;
+.key-contact-card:hover .kc-avatar {
+    transform: scale(1.05);
 }
 
+/* Name - more spacing */
+.kc-name {
+    font-size: 26px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 15px;          /* More space below name */
+    font-family: 'Playfair Display', serif;
+    line-height: 1.2;
+}
+
+/* Role - more spacing */
 .kc-role {
     font-size: 12px;
     color: var(--red);
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-weight: 600;
-    margin-bottom: 20px;
+    font-weight: 700;
+    margin-bottom: 30px;          /* More space below role */
     display: block;
+    line-height: 1.5;
+    max-width: 320px;
 }
 
+/* Divider - more spacing */
 .kc-divider {
-    width: 50px;
-    height: 2px;
-    background: rgba(255,255,255,0.2);
-    margin: 0 auto 20px;
+    width: 60px;
+    height: 3px;
+    background: var(--red);
+    margin: 0 auto 35px;          /* Increased spacing */
+    border-radius: 2px;
 }
 
-.kc-phone, .kc-email {
+/* Contact links container - vertical with proper spacing */
+.kc-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;                    /* Spacing between phone & email */
+    width: 100%;
+    max-width: 320px;
+}
+
+/* Each contact link - well-spaced */
+.kc-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 12px 20px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 8px;
+    gap: 12px;
+    padding: 16px 24px;           /* Larger padding for buttons */
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
     color: white;
     text-decoration: none;
-    margin-bottom: 10px;
     font-size: 14px;
     font-weight: 600;
     transition: var(--transition);
-    border: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    width: 100%;
 }
 
-.kc-phone:hover, .kc-email:hover {
+.kc-link:hover {
     background: var(--red);
-    transform: scale(1.03);
     border-color: var(--red);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(200,32,42,0.4);
 }
 
-.kc-phone i, .kc-email i {
+.kc-link i {
     color: var(--red);
-    font-size: 14px;
+    font-size: 16px;
+    transition: var(--transition);
 }
 
-.kc-phone:hover i, .kc-email:hover i {
+.kc-link:hover i {
     color: white;
 }
 
-/* FOOTER CONTACTS */
+.kc-link span {
+    font-size: 14px;
+}
+
+/* CONTACT INFO GRID */
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.contact-card-item {
+    background: rgba(255,255,255,0.05);
+    padding: 35px 25px;
+    border-radius: var(--radius);
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: var(--transition);
+}
+
+.contact-card-item:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-5px);
+}
+
+.contact-icon {
+    width: 55px;
+    height: 55px;
+    background: var(--red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+    font-size: 20px;
+    color: white;
+}
+
+.contact-card-item h4 {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.contact-card-item p {
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.contact-card-item p a {
+    color: rgba(255,255,255,0.9);
+    transition: var(--transition);
+}
+
+.contact-card-item p a:hover {
+    color: var(--red);
+}
+
+/* FOOTER */
+footer { background: #0d0d1a; color: rgba(255,255,255,0.6); }
+.footer-container { max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+.footer-top {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 40px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    flex-wrap: wrap; gap: 20px;
+}
+.footer-brand { display: flex; align-items: center; gap: 15px; }
+.footer-logo { width: 35px; }
+.footer-brand strong { color: white; display: block; font-size: 14px; }
+.footer-brand span { font-size: 11px; }
+
 .footer-contacts {
     display: flex;
-    gap: 25px;
+    gap: 20px;
     align-items: center;
 }
 
@@ -656,25 +653,62 @@ footer { background: #0d0d1a; color: rgba(255,255,255,0.6); }
     color: var(--red);
 }
 
-/* RESPONSIVE FIXES */
+.footer-links { display: flex; gap: 25px; }
+.footer-links a { font-size: 13px; transition: var(--transition); }
+.footer-links a:hover { color: var(--red); }
+.footer-bottom { padding: 25px 0; text-align: center; font-size: 13px; }
+
+/* BACK TO TOP */
+.back-to-top {
+    position: fixed; bottom: 30px; right: 30px; width: 45px; height: 45px;
+    background: var(--red); color: white; border: none; border-radius: 50%;
+    cursor: pointer; font-size: 16px; opacity: 0; visibility: hidden;
+    transition: var(--transition); z-index: 999; box-shadow: 0 5px 20px rgba(200,32,42,0.3);
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: var(--red-dark); transform: translateY(-3px); }
+
+/* ANIMATIONS */
+[data-animate] { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+[data-animate="slide-right"] { transform: translateX(-50px); }
+[data-animate="slide-left"] { transform: translateX(50px); }
+[data-animate].animated { opacity: 1; transform: translate(0, 0); }
+
+/* RESPONSIVE */
 @media (max-width: 1024px) {
+    .cover-content { grid-template-columns: 1fr; text-align: center; }
+    .cover-left .badge { justify-content: center; }
+    .cover-left h2 { letter-spacing: 8px; }
+    .cover-desc { margin: 0 auto; }
+    .cover-stats { justify-content: center; }
+    .cover-buttons { justify-content: center; }
+    .cover-right { order: -1; }
+    .main-logo { width: 280px; }
+    .about-grid { grid-template-columns: 1fr; }
+
     .team-grid-three {
         grid-template-columns: 1fr;
         max-width: 500px;
         margin: 0 auto;
     }
+
     .key-contacts {
         grid-template-columns: 1fr;
+        max-width: 500px;
+        gap: 30px;
     }
+
     .footer-top {
         flex-direction: column;
         text-align: center;
     }
+
     .footer-contacts {
         flex-direction: column;
         gap: 12px;
         width: 100%;
     }
+
     .fc-item {
         width: 100%;
         justify-content: center;
@@ -682,22 +716,88 @@ footer { background: #0d0d1a; color: rgba(255,255,255,0.6); }
 }
 
 @media (max-width: 768px) {
-    .kc-name {
-        font-size: 20px;
+    .menu-toggle { display: flex; }
+    .nav-links {
+        display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(26,26,46,0.98); flex-direction: column; justify-content: center;
+        align-items: center; gap: 25px; z-index: 999;
     }
+    .nav-links.show { display: flex; }
+    .nav-links a { font-size: 18px; }
+
+    .cover-left .line-1, .cover-left .line-3 { font-size: 55px; }
+    .cover-left .line-2 { font-size: 38px; }
+    .cover-stats { flex-direction: column; gap: 20px; }
+    .cover-buttons { flex-direction: column; align-items: center; }
+
+    .section { padding: 70px 0; }
+    .section-title { font-size: 30px; }
+    .snapshot-grid { grid-template-columns: 1fr; }
+    .vmv-grid { grid-template-columns: 1fr; }
+    .banking-grid { grid-template-columns: 1fr; }
+    .contact-info-grid { grid-template-columns: 1fr; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+    .main-logo { width: 250px; }
+    .logo-card { padding: 25px 30px; }
+
+    /* Key contacts mobile - reduce padding but keep good spacing */
+    .key-contact-card {
+        padding: 45px 30px;
+    }
+
+    .kc-name {
+        font-size: 22px;
+    }
+
     .kc-avatar {
-        width: 70px;
-        height: 70px;
-        font-size: 28px;
+        width: 85px;
+        height: 85px;
+        font-size: 34px;
+        margin-bottom: 25px;
+    }
+
+    .kc-role {
+        margin-bottom: 25px;
+    }
+
+    .kc-divider {
+        margin-bottom: 28px;
     }
 }
+
+@media (max-width: 480px) {
+    .cover-left .line-1, .cover-left .line-3 { font-size: 42px; }
+    .cover-left .line-2 { font-size: 28px; }
+    .section-title { font-size: 26px; }
+    .cover-left h2 { letter-spacing: 5px; font-size: 14px; }
+
+    .key-contact-card {
+        padding: 40px 25px;
+    }
+
+    .kc-link span {
+        font-size: 12px;
+    }
+
+    .kc-link {
+        padding: 14px 18px;
+    }
+}
+
 /* PRINT */
 @media print {
     #navbar, .menu-toggle, .back-to-top, .scroll-indicator, #preloader { display: none !important; }
     .cover { min-height: auto; padding: 40px 20px; }
     section { page-break-inside: avoid; padding: 40px 20px; }
     .section-dark, .section-red { background: white !important; color: #333 !important; }
-    .service-card, .why-card, .contact-card-item { background: #f5f5f5 !important; color: #333 !important; border: 1px solid #ddd !important; }
+    .service-card, .why-card, .contact-card-item, .key-contact-card {
+        background: #f5f5f5 !important; color: #333 !important; border: 1px solid #ddd !important;
+    }
+    .kc-name, .contact-card-item h4 { color: #333 !important; }
+    .kc-link {
+        background: #fff !important; color: #333 !important; border: 1px solid #ccc !important;
+    }
+    .contact-card-item p, .contact-card-item p a { color: #555 !important; }
     .banking-card { background: #f5f5f5 !important; color: #333 !important; }
     .bank-item { border-left-color: #333 !important; }
     .b-label { color: #666 !important; }
