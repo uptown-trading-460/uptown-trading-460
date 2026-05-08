@@ -1,634 +1,727 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Uptown Trading 460 CC | Company Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Montserrat', sans-serif; color: #222; line-height: 1.6; background: #f5f5f5; }
-
-  /* COLORS */
-  :root {
-    --red: #C8202A;
-    --dark: #1A1A2E;
-    --light: #f8f8f8;
-    --gold: #D4A017;
-  }
-
-  /* NAVIGATION */
-  nav {
-    position: fixed; top: 0; width: 100%; background: rgba(26,26,46,0.95);
-    z-index: 1000; padding: 15px 40px; display: flex; justify-content: space-between;
-    align-items: center; backdrop-filter: blur(10px);
-  }
-  nav .brand { color: white; font-weight: 900; font-size: 18px; letter-spacing: 1px; }
-  nav .brand span { color: var(--red); }
-  nav ul { display: flex; list-style: none; gap: 25px; }
-  nav ul a { color: white; text-decoration: none; font-size: 13px; font-weight: 500;
-    transition: color 0.3s; text-transform: uppercase; letter-spacing: 1px; }
-  nav ul a:hover { color: var(--red); }
-  .menu-toggle { display: none; color: white; font-size: 24px; cursor: pointer; background: none; border: none; }
-
-  /* COVER PAGE */
-  .cover {
-    min-height: 100vh; background: linear-gradient(135deg, #fff 0%, #fff 60%, var(--red) 60%, var(--red) 100%);
-    display: flex; align-items: center; justify-content: center; padding: 80px 40px 40px;
-    position: relative; overflow: hidden;
-  }
-  .cover-content { max-width: 1200px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-  .cover-left h1 {
-    font-family: 'Playfair Display', serif; font-size: 80px; font-weight: 900;
-    color: var(--dark); line-height: 0.9; letter-spacing: -2px;
-  }
-  .cover-left h1 span { display: block; border-bottom: 4px solid var(--red); padding-bottom: 10px; }
-  .cover-left h2 {
-    font-size: 60px; font-weight: 300; color: var(--dark); margin-top: 10px; letter-spacing: 8px;
-  }
-  .cover-left .tagline {
-    margin-top: 30px; font-size: 14px; color: #555; max-width: 400px;
-    border-left: 3px solid var(--red); padding-left: 15px;
-  }
-  .cover-left .contact-bar {
-    margin-top: 40px; padding: 20px; background: var(--dark); color: white;
-    border-radius: 4px; font-size: 13px; max-width: 400px;
-  }
-  .cover-left .contact-bar div { margin: 4px 0; display: flex; align-items: center; gap: 10px; }
-  .cover-left .contact-bar svg { width: 14px; height: 14px; fill: var(--red); }
-
-  .cover-right { display: flex; justify-content: center; align-items: center; flex-direction: column; }
-  .logo-box {
-    background: white; padding: 40px; border-radius: 8px;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.3); transform: rotate(-3deg);
-    transition: transform 0.5s;
-  }
-  .logo-box:hover { transform: rotate(0deg) scale(1.02); }
-
-  /* LOGO SVG STYLING */
-  .uptown-logo { width: 280px; height: auto; display: block; margin: 0 auto; }
-  .logo-tagline {
-    text-align: center; margin-top: 15px; font-weight: 700;
-    color: var(--dark); letter-spacing: 3px; font-size: 11px;
-  }
-
-  .skyline-deco {
-    position: absolute; bottom: 0; left: 0; width: 100%; height: 80px;
-    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 80'><path fill='%231A1A2E' d='M0,80 L0,40 L40,40 L40,20 L80,20 L80,50 L120,50 L120,30 L160,30 L160,10 L200,10 L200,40 L240,40 L240,25 L280,25 L280,45 L320,45 L320,15 L360,15 L360,40 L400,40 L400,30 L440,30 L440,55 L480,55 L480,20 L520,20 L520,40 L560,40 L560,30 L600,30 L600,10 L640,10 L640,35 L680,35 L680,50 L720,50 L720,25 L760,25 L760,40 L800,40 L800,15 L840,15 L840,30 L880,30 L880,45 L920,45 L920,20 L960,20 L960,35 L1000,35 L1000,50 L1040,50 L1040,25 L1080,25 L1080,40 L1120,40 L1120,30 L1160,30 L1160,45 L1200,45 L1200,80 Z'/></svg>") no-repeat bottom;
-    background-size: cover; opacity: 0.15; pointer-events: none;
-  }
-
-  /* SECTIONS */
-  section { padding: 80px 40px; max-width: 1200px; margin: 0 auto; }
-  .section-title {
-    text-align: center; margin-bottom: 60px;
-  }
-  .section-title h2 {
-    font-family: 'Playfair Display', serif; font-size: 42px; color: var(--dark);
-    position: relative; display: inline-block;
-  }
-  .section-title h2::after {
-    content: ''; position: absolute; bottom: -10px; left: 50%;
-    transform: translateX(-50%); width: 60px; height: 4px; background: var(--red);
-  }
-  .section-title p { color: #777; margin-top: 20px; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
-
-  /* SNAPSHOT */
-  .snapshot { background: white; padding: 50px; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
-  .snapshot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
-  .snap-item {
-    border-left: 3px solid var(--red); padding: 10px 15px;
-  }
-  .snap-item .label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
-  .snap-item .value { font-size: 15px; color: var(--dark); font-weight: 700; margin-top: 4px; }
-
-  /* EXECUTIVE SUMMARY */
-  #summary { background: white; }
-  .summary-text {
-    font-size: 16px; line-height: 1.9; color: #444; max-width: 900px; margin: 0 auto;
-    text-align: justify;
-  }
-  .summary-text strong { color: var(--red); }
-
-  /* VISION/MISSION */
-  .vmv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-  .vmv-card {
-    background: white; padding: 40px 30px; border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s; border-top: 4px solid var(--red);
-  }
-  .vmv-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
-  .vmv-card .icon { font-size: 50px; margin-bottom: 20px; }
-  .vmv-card h3 { color: var(--dark); margin-bottom: 15px; font-size: 22px; }
-  .vmv-card p { color: #666; font-size: 14px; }
-  .vmv-card ul { list-style: none; text-align: left; margin-top: 10px; }
-  .vmv-card ul li { padding: 5px 0; font-size: 13px; color: #555; }
-  .vmv-card ul li::before { content: "✦ "; color: var(--red); font-weight: bold; }
-
-  /* SERVICES */
-  #services { background: var(--dark); color: white; max-width: 100%; padding: 80px 40px; }
-  #services .section-title h2 { color: white; }
-  #services .section-title p { color: #ccc; }
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
-  .service-card {
-    background: rgba(255,255,255,0.05); padding: 35px 25px; border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s;
-  }
-  .service-card:hover { background: var(--red); transform: translateY(-5px); }
-  .service-card .icon { font-size: 40px; margin-bottom: 15px; }
-  .service-card h3 { font-size: 18px; margin-bottom: 12px; color: white; }
-  .service-card ul { list-style: none; }
-  .service-card ul li { padding: 4px 0; font-size: 13px; color: #ddd; }
-  .service-card ul li::before { content: "▸ "; color: var(--red); font-weight: bold; }
-  .service-card:hover ul li::before { color: white; }
-
-  /* TRACK RECORD */
-  .track-table { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
-  .track-section { padding: 30px; border-bottom: 1px solid #eee; }
-  .track-section h3 { color: var(--red); margin-bottom: 15px; font-size: 18px; display: flex; align-items: center; gap: 10px; }
-  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-  table th { background: var(--dark); color: white; padding: 12px; text-align: left; font-size: 12px; text-transform: uppercase; }
-  table td { padding: 12px; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
-  table tr:hover { background: #fafafa; }
-  .reference { font-size: 12px; color: #777; margin-top: 10px; font-style: italic; }
-
-  /* MANAGEMENT */
-  .mgmt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-  .mgmt-card {
-    background: white; padding: 40px; border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-left: 5px solid var(--red);
-  }
-  .mgmt-card h3 { color: var(--dark); margin-bottom: 20px; font-size: 22px; }
-  .mgmt-card .row { display: flex; padding: 8px 0; border-bottom: 1px dashed #eee; }
-  .mgmt-card .row .label { font-weight: 700; color: #555; width: 180px; font-size: 13px; }
-  .mgmt-card .row .value { color: #222; font-size: 13px; flex: 1; }
-
-  /* BANKING */
-  #banking .snapshot { background: linear-gradient(135deg, var(--dark) 0%, #333 100%); color: white; }
-  #banking .snap-item { border-left-color: var(--gold); }
-  #banking .snap-item .label { color: #aaa; }
-  #banking .snap-item .value { color: white; }
-
-  /* COMPLIANCE */
-  .compliance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
-  .compliance-item {
-    background: white; padding: 20px; border-radius: 8px; display: flex; align-items: center; gap: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s;
-  }
-  .compliance-item:hover { transform: scale(1.03); }
-  .compliance-item .check {
-    width: 35px; height: 35px; background: var(--red); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; flex-shrink: 0;
-  }
-  .compliance-item .text { font-size: 13px; color: var(--dark); font-weight: 600; }
-
-  /* WHY US */
-  #why { background: linear-gradient(135deg, var(--red) 0%, #a01820 100%); color: white; max-width: 100%; padding: 80px 40px; }
-  #why .section-title h2 { color: white; }
-  #why .section-title h2::after { background: white; }
-  #why .section-title p { color: #ffe5e5; }
-  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
-  .why-card {
-    background: rgba(255,255,255,0.1); padding: 30px; border-radius: 8px;
-    backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);
-  }
-  .why-card .num { font-size: 40px; font-weight: 900; opacity: 0.4; }
-  .why-card h3 { font-size: 16px; margin: 10px 0; }
-  .why-card p { font-size: 13px; opacity: 0.9; }
-
-  /* CONTACT */
-  #contact { background: var(--dark); color: white; max-width: 100%; padding: 80px 40px; }
-  #contact .section-title h2 { color: white; }
-  .contact-card {
-    max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.05);
-    padding: 50px; border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.1);
-  }
-  .contact-card h3 { font-size: 28px; margin-bottom: 5px; }
-  .contact-card .role { color: var(--red); margin-bottom: 30px; letter-spacing: 2px; font-size: 13px; text-transform: uppercase; }
-  .contact-info { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; margin-top: 20px; }
-  .contact-info .item { padding: 15px; background: rgba(255,255,255,0.05); border-radius: 6px; }
-  .contact-info .item .lbl { font-size: 11px; color: var(--red); text-transform: uppercase; letter-spacing: 1px; }
-  .contact-info .item .val { color: white; margin-top: 5px; font-size: 14px; }
-
-  /* FOOTER */
-  footer { background: #0d0d1a; color: #888; text-align: center; padding: 30px; font-size: 12px; }
-  footer span { color: var(--red); }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    nav { padding: 15px 20px; }
-    nav ul { display: none; position: absolute; top: 60px; left: 0; right: 0;
-      background: var(--dark); flex-direction: column; padding: 20px; gap: 15px; }
-    nav ul.show { display: flex; }
-    .menu-toggle { display: block; }
-    .cover { padding: 100px 20px 60px; }
-    .cover-content { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-    .cover-left h1 { font-size: 50px; }
-    .cover-left h2 { font-size: 35px; letter-spacing: 4px; }
-    .cover-left .tagline, .cover-left .contact-bar { margin-left: auto; margin-right: auto; }
-    .snapshot-grid { grid-template-columns: 1fr; }
-    .vmv-grid, .mgmt-grid { grid-template-columns: 1fr; }
-    .contact-info { grid-template-columns: 1fr; }
-    section { padding: 60px 20px; }
-    .section-title h2 { font-size: 30px; }
-  }
-
-  /* PRINT */
-  @media print {
-    nav, .menu-toggle { display: none; }
-    section { page-break-inside: avoid; padding: 30px; }
-    .cover { min-height: auto; }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Uptown Trading 460 CC - 100% Black Owned, Level 1 B-BBEE. Construction, Supply, Transport, Catering, Sewing & Landscaping. Established 2005.">
+    <meta name="keywords" content="Uptown Trading 460, construction, supply, transport, catering, landscaping, B-BBEE Level 1, Magaliesburg, Collen Maraba, South Africa">
+    <meta name="author" content="Collen Louis Maraba">
+    <meta property="og:title" content="Uptown Trading 460 CC | Company Portfolio">
+    <meta property="og:description" content="Proudly South African 100% Black Owned multi-disciplinary service provider since 2005.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#C8202A">
+    <link rel="manifest" href="manifest.json">
+    <title>Uptown Trading 460 CC | Company Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- NAVIGATION -->
-<nav>
-  <div class="brand">UPTOWN<span> TRADING 460</span></div>
-  <button class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('show')">☰</button>
-  <ul>
-    <li><a href="#summary">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#track">Track Record</a></li>
-    <li><a href="#why">Why Us</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- COVER PAGE -->
-<div class="cover">
-  <div class="cover-content">
-    <div class="cover-left">
-      <h1><span>COMPANY</span></h1>
-      <h2>PROFILE</h2>
-      <div class="tagline">
-        Established 2005 — A proudly 100% Black-Owned South African Close Corporation specializing in Construction, Supply, Transport, Catering, Sewing & Landscaping.
-      </div>
-      <div class="contact-bar">
-        <div>📍 Portion 80, Doornkloof, Magaliesburg, 1791</div>
-        <div>📱 083 527 5278 | 014 577 5911</div>
-        <div>📧 collenlouis@gmail.com</div>
-      </div>
+<!-- PRELOADER -->
+<div id="preloader">
+    <div class="loader">
+        <div class="loader-logo">
+            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 10 5 L 10 35 Q 10 50 30 50 Q 50 50 50 35 L 50 5 L 42 5 L 42 35 Q 42 43 30 43 Q 18 43 18 35 L 18 5 Z" fill="#C8202A"/>
+                <rect x="20" y="12" width="20" height="28" fill="#1A1A2E" rx="1"/>
+                <rect x="23" y="16" width="4" height="3" fill="#C8202A" rx="0.5"/>
+                <rect x="29" y="16" width="4" height="3" fill="#C8202A" rx="0.5"/>
+                <rect x="35" y="16" width="4" height="3" fill="#C8202A" rx="0.5"/>
+                <rect x="23" y="22" width="4" height="3" fill="#C8202A" rx="0.5"/>
+                <rect x="29" y="22" width="4" height="3" fill="#C8202A" rx="0.5"/>
+                <rect x="35" y="22" width="4" height="3" fill="#C8202A" rx="0.5"/>
+            </svg>
+        </div>
+        <div class="loader-bar"><div class="loader-progress"></div></div>
+        <p>Loading Portfolio...</p>
     </div>
-    <div class="cover-right">
-      <div class="logo-box">
-        <!-- RECREATED UPTOWN LOGO -->
-        <svg class="uptown-logo" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-          <!-- Dark "U" shape base -->
-          <path d="M 50 30 L 50 130 Q 50 170 110 170 Q 170 170 170 130 L 170 30 L 140 30 L 140 130 Q 140 145 110 145 Q 80 145 80 130 L 80 30 Z" fill="#1A1A3E"/>
-
-          <!-- Red building inside U -->
-          <rect x="85" y="60" width="50" height="85" fill="#C8202A"/>
-          <!-- Building windows (white) -->
-          <rect x="92" y="70" width="8" height="8" fill="white"/>
-          <rect x="106" y="70" width="8" height="8" fill="white"/>
-          <rect x="120" y="70" width="8" height="8" fill="white"/>
-          <rect x="92" y="85" width="8" height="8" fill="white"/>
-          <rect x="106" y="85" width="8" height="8" fill="white"/>
-          <rect x="120" y="85" width="8" height="8" fill="white"/>
-          <rect x="92" y="100" width="8" height="8" fill="white"/>
-          <rect x="106" y="100" width="8" height="8" fill="white"/>
-          <rect x="120" y="100" width="8" height="8" fill="white"/>
-          <rect x="92" y="115" width="8" height="8" fill="white"/>
-          <rect x="106" y="115" width="8" height="8" fill="white"/>
-          <rect x="120" y="115" width="8" height="8" fill="white"/>
-          <!-- Building roof triangle -->
-          <polygon points="85,60 110,40 135,60" fill="#1A1A3E"/>
-
-          <!-- PTOWN text -->
-          <text x="180" y="105" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" fill="#1A1A3E">PTOWN</text>
-
-          <!-- Red horizontal line -->
-          <line x1="50" y1="180" x2="380" y2="180" stroke="#C8202A" stroke-width="2"/>
-
-          <!-- Subtitle -->
-          <text x="180" y="195" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#1A1A3E" letter-spacing="3">TRADING 460CC</text>
-        </svg>
-        <div class="logo-tagline">EST. 2005 • LEVEL 1 B-BBEE</div>
-      </div>
-    </div>
-  </div>
-  <div class="skyline-deco"></div>
 </div>
 
-<!-- SNAPSHOT -->
-<section id="snapshot">
-  <div class="section-title">
-    <p>At a Glance</p>
-    <h2>Company Snapshot</h2>
-  </div>
-  <div class="snapshot">
-    <div class="snapshot-grid">
-      <div class="snap-item"><div class="label">Registration No.</div><div class="value">2005/011222/23</div></div>
-      <div class="snap-item"><div class="label">Tax Number</div><div class="value">9641874145</div></div>
-      <div class="snap-item"><div class="label">CSD Number</div><div class="value">R0071830797</div></div>
-      <div class="snap-item"><div class="label">Enterprise Type</div><div class="value">Close Corporation</div></div>
-      <div class="snap-item"><div class="label">Date Established</div><div class="value">02 February 2005</div></div>
-      <div class="snap-item"><div class="label">Status</div><div class="value">Active / In Business</div></div>
-      <div class="snap-item"><div class="label">B-BBEE Status</div><div class="value">Level 1 (135%)</div></div>
-      <div class="snap-item"><div class="label">Ownership</div><div class="value">100% Black Owned</div></div>
-      <div class="snap-item"><div class="label">Annual Turnover</div><div class="value">R10 Million or less (QSE)</div></div>
+<!-- NAVIGATION -->
+<nav id="navbar">
+    <div class="nav-container">
+        <a href="#cover" class="nav-brand">
+            <svg class="nav-logo" viewBox="0 0 50 30" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 5 3 L 5 20 Q 5 27 15 27 Q 25 27 25 20 L 25 3 L 21 3 L 21 20 Q 21 23 15 23 Q 9 23 9 20 L 9 3 Z" fill="#C8202A"/>
+                <rect x="10" y="7" width="10" height="15" fill="white" rx="0.5"/>
+                <rect x="11.5" y="9" width="2" height="2" fill="#C8202A"/>
+                <rect x="14.5" y="9" width="2" height="2" fill="#C8202A"/>
+                <rect x="17.5" y="9" width="2" height="2" fill="#C8202A"/>
+                <rect x="11.5" y="13" width="2" height="2" fill="#C8202A"/>
+                <rect x="14.5" y="13" width="2" height="2" fill="#C8202A"/>
+                <rect x="17.5" y="13" width="2" height="2" fill="#C8202A"/>
+            </svg>
+            <div>
+                <span class="brand-name">UPTOWN <span class="red">TRADING 460</span></span>
+                <span class="brand-sub">Close Corporation</span>
+            </div>
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#cover">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#track">Projects</a></li>
+            <li><a href="#team">Management</a></li>
+            <li><a href="#compliance">Compliance</a></li>
+            <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+        </ul>
     </div>
-  </div>
+</nav>
+
+<!-- COVER / HERO -->
+<section id="cover" class="cover">
+    <div class="cover-bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="skyline">
+        <svg viewBox="0 0 1440 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path fill="rgba(26,26,46,0.08)" d="M0,200 L0,120 L30,120 L30,80 L60,80 L60,100 L90,100 L90,60 L110,60 L110,40 L140,40 L140,90 L170,90 L170,70 L200,70 L200,110 L230,110 L230,50 L260,50 L260,80 L290,80 L290,100 L320,100 L320,65 L350,65 L350,90 L380,90 L380,45 L410,45 L410,75 L440,75 L440,110 L470,110 L470,55 L500,55 L500,85 L530,85 L530,95 L560,95 L560,70 L590,70 L590,40 L620,40 L620,100 L650,100 L650,60 L680,60 L680,80 L710,80 L710,50 L740,50 L740,90 L770,90 L770,75 L800,75 L800,110 L830,110 L830,45 L860,45 L860,70 L890,70 L890,100 L920,100 L920,55 L950,55 L950,85 L980,85 L980,65 L1010,65 L1010,95 L1040,95 L1040,50 L1070,50 L1070,80 L1100,80 L1100,110 L1130,110 L1130,60 L1160,60 L1160,90 L1190,90 L1190,70 L1220,70 L1220,100 L1250,100 L1250,45 L1280,45 L1280,75 L1310,75 L1310,95 L1340,95 L1340,55 L1370,55 L1370,85 L1400,85 L1400,110 L1440,110 L1440,200 Z"/>
+        </svg>
+    </div>
+
+    <div class="cover-container">
+        <div class="cover-content">
+            <div class="cover-left" data-animate="slide-right">
+                <div class="badge">
+                    <span class="badge-dot"></span>
+                    LEVEL 1 B-BBEE • 100% BLACK OWNED
+                </div>
+                <h1>
+                    <span class="line-1">UPTOWN</span>
+                    <span class="line-2">TRADING</span>
+                    <span class="line-3">460<span class="cc">CC</span></span>
+                </h1>
+                <div class="cover-divider"></div>
+                <h2>COMPANY PROFILE</h2>
+                <p class="cover-desc">
+                    A proudly South African multi-disciplinary service provider established in 2005,
+                    specializing in Construction, Supply, Transport, Catering, Sewing & Landscaping.
+                </p>
+                <div class="cover-stats">
+                    <div class="stat">
+                        <span class="stat-num" data-count="20">0</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-num" data-count="15">0</span><span class="plus">+</span>
+                        <span class="stat-label">Government Projects</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-num" data-count="7">0</span>
+                        <span class="stat-label">Service Areas</span>
+                    </div>
+                </div>
+                <div class="cover-buttons">
+                    <a href="#services" class="btn btn-primary"><i class="fas fa-briefcase"></i> Our Services</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fas fa-phone"></i> Contact Us</a>
+                </div>
+            </div>
+            <div class="cover-right" data-animate="slide-left">
+                <div class="logo-showcase">
+                    <div class="logo-card">
+                        <div class="logo-glow"></div>
+                        <svg class="main-logo" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="110" cy="130" r="80" fill="#1A1A2E"/>
+                            <path d="M 55 50 L 55 150 Q 55 200 110 200 Q 165 200 165 150 L 165 50 L 140 50 L 140 150 Q 140 175 110 175 Q 80 175 80 150 L 80 50 Z" fill="#C8202A"/>
+                            <rect x="88" y="75" width="44" height="80" fill="#1A1A2E" rx="2"/>
+                            <rect x="93" y="82" width="7" height="6" fill="#C8202A" rx="1"/>
+                            <rect x="103" y="82" width="7" height="6" fill="#C8202A" rx="1"/>
+                            <rect x="113" y="82" width="7" height="6" fill="#C8202A" rx="1"/>
+                            <rect x="123" y="82" width="7" height="6" fill="#fff" rx="1" opacity="0.3"/>
+                            <rect x="93" y="93" width="7" height="6" fill="#C8202A" rx="1"/>
+                            <rect x="103" y="93" width="7" height="6" fill="#fff" rx="1" opacity="0.3"/>
+                            <rect x="113" y="93" width="7" height="6" fill="#C8202A" rx="1"/>
+                            <rect x="123" y="93" width="7" height="6" fill="#C8202A" rx="1"/>
+                            <rect x="93" y="104" width="7" height="6" fill="#fff" rx="1" opacity="0.3"/>
+                            <rect x="103" y="104" width="7" height="6" fill="#C8202A" rx="1"/>
+                            <rect x="113" y="104" width="7" height="6" fill="#C8202A" rx="1"/>
+                            <rect x="123" y="104" width="7" height="6" fill="#C8202A" rx="1"/>
+                            <rect x="93" y="115" width="7" height="6" fill="#C8202A" rx="1"/>
+                            <rect x="103" y="115" width="7" height="6" fill="#C8202A" rx="1"/>
+                            <rect x="113" y="115" width="7" height="6" fill="#fff" rx="1" opacity="0.3"/>
+                            <rect x="123" y="115" width="7" height="6" fill="#C8202A" rx="1"/>
+                            <rect x="104" y="130" width="12" height="25" fill="#C8202A" rx="1"/>
+                            <rect x="170" y="100" width="20" height="100" fill="#1A1A2E" opacity="0.15"/>
+                            <rect x="195" y="80" width="15" height="120" fill="#1A1A2E" opacity="0.1"/>
+                            <rect x="215" y="110" width="18" height="90" fill="#1A1A2E" opacity="0.12"/>
+                            <rect x="340" y="90" width="20" height="110" fill="#1A1A2E" opacity="0.1"/>
+                            <rect x="365" y="105" width="15" height="95" fill="#1A1A2E" opacity="0.08"/>
+                            <text x="175" y="155" font-family="'Montserrat', Arial Black, sans-serif" font-size="55" font-weight="900" fill="#1A1A2E" letter-spacing="-1">PTOWN</text>
+                            <line x1="55" y1="210" x2="390" y2="210" stroke="#C8202A" stroke-width="3"/>
+                            <text x="175" y="235" font-family="'Montserrat', Arial, sans-serif" font-size="18" font-weight="700" fill="#1A1A2E" letter-spacing="6">TRADING 460CC</text>
+                            <text x="175" y="258" font-family="'Montserrat', Arial, sans-serif" font-size="9" font-weight="400" fill="#888" letter-spacing="3">EST. 2005 • MAGALIESBURG • SOUTH AFRICA</text>
+                        </svg>
+                    </div>
+                    <div class="logo-details">
+                        <div class="detail-chip"><i class="fas fa-calendar"></i> Est. 2005</div>
+                        <div class="detail-chip"><i class="fas fa-certificate"></i> Level 1 B-BBEE</div>
+                        <div class="detail-chip"><i class="fas fa-flag"></i> 100% Black Owned</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scroll-indicator">
+        <span>Scroll Down</span>
+        <div class="scroll-arrow"></div>
+    </div>
 </section>
 
-<!-- EXECUTIVE SUMMARY -->
-<section id="summary">
-  <div class="section-title">
-    <p>Who We Are</p>
-    <h2>Executive Summary</h2>
-  </div>
-  <p class="summary-text">
-    <strong>Uptown Trading 460 CC</strong> is a proudly South African, <strong>100% Black-Owned Close Corporation</strong> that has been in business since <strong>02 February 2005</strong> — giving the company nearly two decades of proven trading history.
-    <br><br>
-    Originally registered for "General Trading in All Aspects," the company evolved through formal CIPC amendments in 2013 and 2016 to specialize in <strong>Construction, Building Maintenance, Renovations, Repair, Transport, Supply, Catering, Sewing, and Landscaping</strong>.
-    <br><br>
-    Under the leadership of <strong>Mr. Collen Louis Maraba</strong>, who took 100% ownership on 27 October 2015, Uptown Trading 460 CC has successfully delivered services to numerous Government Departments — including <strong>Public Works, SAPS, Correctional Services, the Department of Higher Education & Training, SASSA, Mogale City Local Municipality, and the South African National Defence Force</strong>.
-    <br><br>
-    The company is fully tender-ready, registered on the National Treasury Central Supplier Database (CSD), and banks with First National Bank (FNB).
-  </p>
+<!-- COMPANY SNAPSHOT -->
+<section id="snapshot" class="section">
+    <div class="container">
+        <div class="section-header" data-animate="fade-up">
+            <span class="section-tag">AT A GLANCE</span>
+            <h2 class="section-title">Company Snapshot</h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="snapshot-grid" data-animate="fade-up">
+            <div class="snap-card">
+                <div class="snap-icon"><i class="fas fa-id-card"></i></div>
+                <div class="snap-label">Registration No.</div>
+                <div class="snap-value">2005/011222/23</div>
+            </div>
+            <div class="snap-card">
+                <div class="snap-icon"><i class="fas fa-file-invoice"></i></div>
+                <div class="snap-label">Tax Number</div>
+                <div class="snap-value">9641874145</div>
+            </div>
+            <div class="snap-card">
+                <div class="snap-icon"><i class="fas fa-database"></i></div>
+                <div class="snap-label">CSD Number</div>
+                <div class="snap-value">R0071830797</div>
+            </div>
+            <div class="snap-card">
+                <div class="snap-icon"><i class="fas fa-building"></i></div>
+                <div class="snap-label">Enterprise Type</div>
+                <div class="snap-value">Close Corporation</div>
+            </div>
+            <div class="snap-card">
+                <div class="snap-icon"><i class="fas fa-calendar-alt"></i></div>
+                <div class="snap-label">Date Established</div>
+                <div class="snap-value">02 February 2005</div>
+            </div>
+            <div class="snap-card">
+                <div class="snap-icon"><i class="fas fa-check-circle"></i></div>
+                <div class="snap-label">Business Status</div>
+                <div class="snap-value status-active">Active</div>
+            </div>
+            <div class="snap-card highlight">
+                <div class="snap-icon"><i class="fas fa-award"></i></div>
+                <div class="snap-label">B-BBEE Status</div>
+                <div class="snap-value">Level 1 (135%)</div>
+            </div>
+            <div class="snap-card highlight">
+                <div class="snap-icon"><i class="fas fa-users"></i></div>
+                <div class="snap-label">Ownership</div>
+                <div class="snap-value">100% Black Owned</div>
+            </div>
+            <div class="snap-card">
+                <div class="snap-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="snap-label">Annual Turnover</div>
+                <div class="snap-value">R10M or less (QSE)</div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- VISION MISSION VALUES -->
-<section id="vmv">
-  <div class="section-title">
-    <p>Our Foundation</p>
-    <h2>Vision, Mission & Values</h2>
-  </div>
-  <div class="vmv-grid">
-    <div class="vmv-card">
-      <div class="icon">🎯</div>
-      <h3>Our Vision</h3>
-      <p>To be the leading multi-disciplinary service provider in South Africa, recognized for excellence, reliability, and the empowerment of local communities through quality service delivery.</p>
+<!-- ABOUT -->
+<section id="about" class="section section-white">
+    <div class="container">
+        <div class="section-header" data-animate="fade-up">
+            <span class="section-tag">WHO WE ARE</span>
+            <h2 class="section-title">Executive Summary</h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="about-grid" data-animate="fade-up">
+            <div class="about-text">
+                <p><strong>Uptown Trading 460 CC</strong> is a proudly South African, <strong>100% Black-Owned Close Corporation</strong> that has been in business since <strong>02 February 2005</strong> — giving the company nearly two decades of proven trading history.</p>
+                <p>Originally registered for <em>"General Trading in All Aspects,"</em> the company evolved through formal CIPC amendments in 2013 and 2016 to specialize in <strong>Construction, Building Maintenance, Renovations, Repair, Transport, Supply, Catering, Sewing, and Landscaping</strong>.</p>
+                <p>Under the leadership of <strong>Mr. Collen Louis Maraba</strong>, who took 100% ownership on 27 October 2015, Uptown Trading 460 CC has successfully delivered services to numerous Government Departments — including <strong>Public Works, SAPS, Correctional Services, the Department of Higher Education & Training, SASSA, Mogale City Local Municipality, and the South African National Defence Force</strong>.</p>
+                <p>The company is fully tender-ready, registered on the <strong>National Treasury Central Supplier Database (CSD)</strong>, and banks with <strong>First National Bank (FNB)</strong>.</p>
+            </div>
+            <div class="about-highlights">
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fas fa-history"></i></div>
+                    <h4>Nearly 20 Years</h4>
+                    <p>of continuous operations since 2005</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fas fa-landmark"></i></div>
+                    <h4>Government Trusted</h4>
+                    <p>Multiple departments served successfully</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon"><i class="fas fa-tools"></i></div>
+                    <h4>Multi-Disciplinary</h4>
+                    <p>7 core service areas under one roof</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="vmv-card">
-      <div class="icon">🚀</div>
-      <h3>Our Mission</h3>
-      <p>To deliver high-quality construction, supply, transport, catering, sewing, and landscaping solutions that exceed client expectations while contributing to South Africa's economic transformation.</p>
+</section>
+
+<!-- VMV -->
+<section id="vmv" class="section">
+    <div class="container">
+        <div class="section-header" data-animate="fade-up">
+            <span class="section-tag">OUR FOUNDATION</span>
+            <h2 class="section-title">Vision, Mission & Values</h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="vmv-grid" data-animate="fade-up">
+            <div class="vmv-card">
+                <div class="vmv-icon"><i class="fas fa-eye"></i></div>
+                <h3>Our Vision</h3>
+                <p>To be the leading multi-disciplinary service provider in South Africa, recognized for excellence, reliability, and the empowerment of local communities through quality service delivery.</p>
+            </div>
+            <div class="vmv-card featured">
+                <div class="vmv-icon"><i class="fas fa-rocket"></i></div>
+                <h3>Our Mission</h3>
+                <p>To deliver high-quality construction, supply, transport, catering, sewing, and landscaping solutions that exceed client expectations while creating sustainable employment opportunities and contributing to South Africa's economic transformation.</p>
+            </div>
+            <div class="vmv-card">
+                <div class="vmv-icon"><i class="fas fa-gem"></i></div>
+                <h3>Core Values</h3>
+                <ul class="values-list">
+                    <li><i class="fas fa-check"></i> Integrity</li>
+                    <li><i class="fas fa-check"></i> Quality</li>
+                    <li><i class="fas fa-check"></i> Empowerment</li>
+                    <li><i class="fas fa-check"></i> Reliability</li>
+                    <li><i class="fas fa-check"></i> Safety</li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="vmv-card">
-      <div class="icon">💎</div>
-      <h3>Core Values</h3>
-      <ul>
-        <li>Integrity</li>
-        <li>Quality</li>
-        <li>Empowerment</li>
-        <li>Reliability</li>
-        <li>Safety</li>
-      </ul>
-    </div>
-  </div>
 </section>
 
 <!-- SERVICES -->
-<section id="services">
-  <div class="section-title">
-    <p>What We Do</p>
-    <h2>Our Core Services</h2>
-  </div>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="icon">🏗️</div>
-      <h3>Construction & Building</h3>
-      <ul>
-        <li>General Building Construction</li>
-        <li>Maintenance Works</li>
-        <li>Renovations & Refurbishments</li>
-        <li>Structural & General Repairs</li>
-        <li>Building Gutters Erection</li>
-        <li>Ablution Systems</li>
-      </ul>
+<section id="services" class="section section-dark">
+    <div class="container">
+        <div class="section-header" data-animate="fade-up">
+            <span class="section-tag light">WHAT WE DO</span>
+            <h2 class="section-title light">Our Core Services</h2>
+            <div class="title-line center"></div>
+        </div>
+        <div class="services-grid" data-animate="fade-up">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
+                <h3>Construction & Building</h3>
+                <ul>
+                    <li>General Building Construction</li>
+                    <li>Maintenance Works</li>
+                    <li>Renovations & Refurbishments</li>
+                    <li>Structural & General Repairs</li>
+                    <li>Building Gutters Erection</li>
+                    <li>Ablution System Installations</li>
+                </ul>
+                <div class="service-number">01</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-road"></i></div>
+                <h3>Civil Works</h3>
+                <ul>
+                    <li>Road Works</li>
+                    <li>Sewage Tank Maintenance</li>
+                    <li>Cemetery Facilities Maintenance</li>
+                </ul>
+                <div class="service-number">02</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-truck"></i></div>
+                <h3>Transport & Logistics</h3>
+                <ul>
+                    <li>Goods Transportation</li>
+                    <li>Distribution Services</li>
+                </ul>
+                <div class="service-number">03</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-boxes-stacked"></i></div>
+                <h3>General Supply</h3>
+                <ul>
+                    <li>Government Supply Contracts</li>
+                    <li>Office Supplies & Tools</li>
+                    <li>General Procurement</li>
+                </ul>
+                <div class="service-number">04</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-utensils"></i></div>
+                <h3>Catering Services</h3>
+                <ul>
+                    <li>Corporate Catering</li>
+                    <li>Event & Functions Catering</li>
+                    <li>Conference Catering</li>
+                </ul>
+                <div class="service-number">05</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-scissors"></i></div>
+                <h3>Sewing & Textiles</h3>
+                <ul>
+                    <li>Uniform Manufacturing</li>
+                    <li>Protective Clothing (PPE)</li>
+                    <li>Branded Apparel</li>
+                </ul>
+                <div class="service-number">06</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-tree"></i></div>
+                <h3>Landscaping</h3>
+                <ul>
+                    <li>Garden Design & Installation</li>
+                    <li>Grounds Maintenance</li>
+                    <li>Site Beautification</li>
+                </ul>
+                <div class="service-number">07</div>
+            </div>
+        </div>
     </div>
-    <div class="service-card">
-      <div class="icon">🚧</div>
-      <h3>Civil Works</h3>
-      <ul>
-        <li>Road Works</li>
-        <li>Sewage Tank Maintenance</li>
-        <li>Cemetery Facilities</li>
-      </ul>
-    </div>
-    <div class="service-card">
-      <div class="icon">🚚</div>
-      <h3>Transport & Logistics</h3>
-      <ul>
-        <li>Goods Transportation</li>
-        <li>Distribution Services</li>
-      </ul>
-    </div>
-    <div class="service-card">
-      <div class="icon">📦</div>
-      <h3>General Supply</h3>
-      <ul>
-        <li>Government Supply Contracts</li>
-        <li>Office Supplies & Tools</li>
-        <li>General Procurement</li>
-      </ul>
-    </div>
-    <div class="service-card">
-      <div class="icon">🍽️</div>
-      <h3>Catering Services</h3>
-      <ul>
-        <li>Corporate Catering</li>
-        <li>Event & Functions Catering</li>
-        <li>Conference Catering</li>
-      </ul>
-    </div>
-    <div class="service-card">
-      <div class="icon">✂️</div>
-      <h3>Sewing & Textiles</h3>
-      <ul>
-        <li>Uniform Manufacturing</li>
-        <li>Protective Clothing (PPE)</li>
-        <li>Branded Apparel</li>
-      </ul>
-    </div>
-    <div class="service-card">
-      <div class="icon">🌳</div>
-      <h3>Landscaping</h3>
-      <ul>
-        <li>Garden Design & Installation</li>
-        <li>Grounds Maintenance</li>
-        <li>Site Beautification</li>
-      </ul>
-    </div>
-  </div>
 </section>
 
 <!-- TRACK RECORD -->
-<section id="track">
-  <div class="section-title">
-    <p>Proven Experience</p>
-    <h2>Track Record</h2>
-  </div>
-  <div class="track-table">
-    <div class="track-section">
-      <h3>🇿🇦 Department of Public Works</h3>
-      <table>
-        <tr><th>Service Rendered</th><th>Location</th></tr>
-        <tr><td>Sewage – Emptying of Tanks</td><td>Magaliesburg Police Station</td></tr>
-        <tr><td>Sewage Services</td><td>Tarlton Police Station</td></tr>
-        <tr><td>Sewage Services</td><td>Krugersdorp Police Station</td></tr>
-        <tr><td>Sewage Services</td><td>Honeydew Police Station</td></tr>
-        <tr><td>Road Works</td><td>Magaliesburg Police Station</td></tr>
-        <tr><td>Supply</td><td>Krugersdorp Prison Services</td></tr>
-        <tr><td>Supply</td><td>SA Eagle House</td></tr>
-        <tr><td>Supply</td><td>Brits Prison Services</td></tr>
-        <tr><td>Maintenance, Construction & Repair</td><td>Krugersdorp Prison Services</td></tr>
-        <tr><td>Maintenance, Construction & Repair</td><td>Heidelberg Military Base</td></tr>
-        <tr><td>Maintenance, Construction & Repair (V1CR3)</td><td>Lenasia Military Base</td></tr>
-      </table>
-      <div class="reference">📞 Reference: Margaret – (011) 713 6234</div>
-    </div>
+<section id="track" class="section section-white">
+    <div class="container">
+        <div class="section-header" data-animate="fade-up">
+            <span class="section-tag">PROVEN EXPERIENCE</span>
+            <h2 class="section-title">Track Record</h2>
+            <div class="title-line"></div>
+        </div>
 
-    <div class="track-section">
-      <h3>🎓 Department of Higher Education & Training</h3>
-      <table>
-        <tr><th>Service</th><th>Location</th><th>Order No.</th><th>Value</th></tr>
-        <tr><td>Supply</td><td>INDLELA</td><td>N1690 / 007428</td><td>R152,562.00</td></tr>
-      </table>
-      <div class="reference">📞 Reference: 012 031 25134</div>
-    </div>
+        <div class="track-container" data-animate="fade-up">
+            <div class="track-block">
+                <div class="track-header">
+                    <div class="track-icon"><i class="fas fa-landmark"></i></div>
+                    <div>
+                        <h3>Department of Public Works</h3>
+                        <p class="track-sub">South African Government</p>
+                    </div>
+                </div>
+                <div class="track-table-wrap">
+                    <table class="track-table">
+                        <thead>
+                            <tr><th>Service Rendered</th><th>Location</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Sewage – Emptying of Tanks</td><td>Magaliesburg Police Station</td></tr>
+                            <tr><td>Sewage Services</td><td>Tarlton Police Station</td></tr>
+                            <tr><td>Sewage Services</td><td>Krugersdorp Police Station</td></tr>
+                            <tr><td>Sewage Services</td><td>Honeydew Police Station</td></tr>
+                            <tr><td>Road Works</td><td>Magaliesburg Police Station</td></tr>
+                            <tr><td>Supply</td><td>Krugersdorp Prison Services</td></tr>
+                            <tr><td>Supply</td><td>SA Eagle House</td></tr>
+                            <tr><td>Supply</td><td>Brits Prison Services</td></tr>
+                            <tr><td>Maintenance, Construction & Repair</td><td>Krugersdorp Prison Services</td></tr>
+                            <tr><td>Maintenance, Construction & Repair</td><td>Heidelberg Military Base</td></tr>
+                            <tr><td>Maintenance, Construction & Repair (V1CR3)</td><td>Lenasia Military Base</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="track-ref"><i class="fas fa-phone"></i> Reference: Margaret – (011) 713 6234</div>
+            </div>
 
-    <div class="track-section">
-      <h3>🏛️ South African Social Security Agency (SASSA)</h3>
-      <table>
-        <tr><th>Service</th><th>Location</th></tr>
-        <tr><td>Maintenance & Renovating Supply</td><td>SASSA – Randfontein</td></tr>
-        <tr><td>Maintenance & Renovating Supply</td><td>SASSA – Krugersdorp</td></tr>
-      </table>
-    </div>
+            <div class="track-block">
+                <div class="track-header">
+                    <div class="track-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div>
+                        <h3>Department of Higher Education & Training</h3>
+                        <p class="track-sub">INDLELA Training Centre</p>
+                    </div>
+                </div>
+                <div class="track-table-wrap">
+                    <table class="track-table">
+                        <thead>
+                            <tr><th>Service</th><th>Location</th><th>Order No.</th><th>Value</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Supply</td><td>INDLELA</td><td>N1690 / 007428</td><td>R152,562.00</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="track-ref"><i class="fas fa-phone"></i> Reference: 012 031 25134</div>
+            </div>
 
-    <div class="track-section">
-      <h3>🏘️ Mogale City Local Municipality</h3>
-      <table>
-        <tr><th>Service</th><th>Financial Year</th></tr>
-        <tr><td>Erecting DIEM Offices Building Gutters</td><td>2016/17</td></tr>
-        <tr><td>Repairing & Replacing Kagiso Cemetery Ablution System</td><td>2016/17</td></tr>
-      </table>
-      <div class="reference">📞 Reference: Lindiwe Mabaso – (011) 951 2125 / 081 400 9122 (Verified by Letter of Acknowledgement, 09 May 2018)</div>
+            <div class="track-block">
+                <div class="track-header">
+                    <div class="track-icon"><i class="fas fa-hands-helping"></i></div>
+                    <div>
+                        <h3>South African Social Security Agency (SASSA)</h3>
+                        <p class="track-sub">Social Development</p>
+                    </div>
+                </div>
+                <div class="track-table-wrap">
+                    <table class="track-table">
+                        <thead>
+                            <tr><th>Service</th><th>Location</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Maintenance & Renovating Supply</td><td>SASSA – Randfontein</td></tr>
+                            <tr><td>Maintenance & Renovating Supply</td><td>SASSA – Krugersdorp</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="track-block">
+                <div class="track-header">
+                    <div class="track-icon"><i class="fas fa-city"></i></div>
+                    <div>
+                        <h3>Mogale City Local Municipality</h3>
+                        <p class="track-sub">Verified by Letter of Acknowledgement – 09 May 2018</p>
+                    </div>
+                </div>
+                <div class="track-table-wrap">
+                    <table class="track-table">
+                        <thead>
+                            <tr><th>Service</th><th>Financial Year</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Erecting DIEM Offices Building Gutters</td><td>2016/17</td></tr>
+                            <tr><td>Repairing & Replacing Kagiso Cemetery Ablution System</td><td>2016/17</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="track-ref"><i class="fas fa-phone"></i> Reference: Lindiwe Mabaso – (011) 951 2125 / 081 400 9122</div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
-<!-- MANAGEMENT -->
-<section id="management">
-  <div class="section-title">
-    <p>Leadership</p>
-    <h2>Management & Governance</h2>
-  </div>
-  <div class="mgmt-grid">
-    <div class="mgmt-card">
-      <h3>👤 Founder & Sole Member</h3>
-      <div class="row"><div class="label">Full Name</div><div class="value">Collen Louis Maraba</div></div>
-      <div class="row"><div class="label">ID Number</div><div class="value">7601025276088</div></div>
-      <div class="row"><div class="label">Position</div><div class="value">Founder / Sole Member</div></div>
-      <div class="row"><div class="label">Member Contribution</div><div class="value">R100.00 (100%)</div></div>
-      <div class="row"><div class="label">Date Appointed</div><div class="value">27 October 2015</div></div>
-      <div class="row"><div class="label">Postal Address</div><div class="value">P.O. Box 438, Magaliesburg, 1791</div></div>
+<!-- TEAM -->
+<section id="team" class="section">
+    <div class="container">
+        <div class="section-header" data-animate="fade-up">
+            <span class="section-tag">LEADERSHIP</span>
+            <h2 class="section-title">Management & Governance</h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="team-grid" data-animate="fade-up">
+            <div class="team-card primary">
+                <div class="team-avatar">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>Collen Louis Maraba</h3>
+                <span class="team-role">Founder & Sole Member</span>
+                <div class="team-details">
+                    <div class="team-row"><span class="t-label">ID Number</span><span class="t-value">7601025276088</span></div>
+                    <div class="team-row"><span class="t-label">Contribution</span><span class="t-value">R100.00 (100%)</span></div>
+                    <div class="team-row"><span class="t-label">Date Appointed</span><span class="t-value">27 October 2015</span></div>
+                    <div class="team-row"><span class="t-label">Postal Address</span><span class="t-value">P.O. Box 438, Magaliesburg, 1791</span></div>
+                    <div class="team-row"><span class="t-label">Residential</span><span class="t-value">Portion 80, Doornkloof, 1791</span></div>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar secondary">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <h3>Schutte en Jacobs CC</h3>
+                <span class="team-role">Accounting Officer</span>
+                <div class="team-details">
+                    <div class="team-row"><span class="t-label">Profession</span><span class="t-value">SAIPA Registered</span></div>
+                    <div class="team-row"><span class="t-label">Practice No.</span><span class="t-value">PRAC721</span></div>
+                    <div class="team-row"><span class="t-label">Postal Address</span><span class="t-value">P.O. Box 1232, Rustenburg, 0300</span></div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="mgmt-card">
-      <h3>📊 Accounting Officer</h3>
-      <div class="row"><div class="label">Firm</div><div class="value">Schutte en Jacobs CC</div></div>
-      <div class="row"><div class="label">Profession</div><div class="value">SAIPA Registered</div></div>
-      <div class="row"><div class="label">Practice Number</div><div class="value">PRAC721</div></div>
-      <div class="row"><div class="label">Postal Address</div><div class="value">P.O. Box 1232, Rustenburg, 0300</div></div>
-    </div>
-  </div>
 </section>
 
 <!-- BANKING -->
-<section id="banking">
-  <div class="section-title">
-    <p>Verified by FNB</p>
-    <h2>Banking Details</h2>
-  </div>
-  <div class="snapshot">
-    <div class="snapshot-grid">
-      <div class="snap-item"><div class="label">Account Holder</div><div class="value">Uptown Trading 460 CC</div></div>
-      <div class="snap-item"><div class="label">Bank</div><div class="value">First National Bank (FNB)</div></div>
-      <div class="snap-item"><div class="label">Account Type</div><div class="value">Business Account</div></div>
-      <div class="snap-item"><div class="label">Account Number</div><div class="value">62080773221</div></div>
-      <div class="snap-item"><div class="label">Branch Code</div><div class="value">250241</div></div>
-      <div class="snap-item"><div class="label">Branch Name</div><div class="value">Krugersdorp, TVL</div></div>
-      <div class="snap-item"><div class="label">Swift Code</div><div class="value">FIRNZAJJ</div></div>
-      <div class="snap-item"><div class="label">Date Opened</div><div class="value">30 March 2005</div></div>
-      <div class="snap-item"><div class="label">Status</div><div class="value">Active</div></div>
+<section id="banking" class="section section-dark">
+    <div class="container">
+        <div class="section-header" data-animate="fade-up">
+            <span class="section-tag light">VERIFIED BY FNB</span>
+            <h2 class="section-title light">Banking Details</h2>
+            <div class="title-line center"></div>
+        </div>
+        <div class="banking-card" data-animate="fade-up">
+            <div class="bank-logo">
+                <i class="fas fa-university"></i>
+                <span>First National Bank</span>
+            </div>
+            <div class="banking-grid">
+                <div class="bank-item"><div class="b-label">Account Holder</div><div class="b-value">Uptown Trading 460 CC</div></div>
+                <div class="bank-item"><div class="b-label">Account Type</div><div class="b-value">Business Account</div></div>
+                <div class="bank-item"><div class="b-label">Account Number</div><div class="b-value">62080773221</div></div>
+                <div class="bank-item"><div class="b-label">Branch Name</div><div class="b-value">Krugersdorp, TVL</div></div>
+                <div class="bank-item"><div class="b-label">Branch Code</div><div class="b-value">250241</div></div>
+                <div class="bank-item"><div class="b-label">Swift Code</div><div class="b-value">FIRNZAJJ</div></div>
+                <div class="bank-item"><div class="b-label">Date Opened</div><div class="b-value">30 March 2005</div></div>
+                <div class="bank-item"><div class="b-label">Status</div><div class="b-value status-active">Active & Transacting</div></div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <!-- COMPLIANCE -->
-<section id="compliance">
-  <div class="section-title">
-    <p>Fully Compliant</p>
-    <h2>Statutory Compliance</h2>
-  </div>
-  <div class="compliance-grid">
-    <div class="compliance-item"><div class="check">✓</div><div class="text">CIPC Registered & Active</div></div>
-    <div class="compliance-item"><div class="check">✓</div><div class="text">SARS Tax Registered</div></div>
-    <div class="compliance-item"><div class="check">✓</div><div class="text">CSD Active Supplier</div></div>
-    <div class="compliance-item"><div class="check">✓</div><div class="text">FNB Business Account</div></div>
-    <div class="compliance-item"><div class="check">✓</div><div class="text">B-BBEE Level 1 (135%)</div></div>
-    <div class="compliance-item"><div class="check">✓</div><div class="text">100% Black Owned</div></div>
-    <div class="compliance-item"><div class="check">✓</div><div class="text">SAIPA Accounting Officer</div></div>
-    <div class="compliance-item"><div class="check">✓</div><div class="text">QSE Status</div></div>
-  </div>
+<section id="compliance" class="section section-white">
+    <div class="container">
+        <div class="section-header" data-animate="fade-up">
+            <span class="section-tag">FULLY COMPLIANT</span>
+            <h2 class="section-title">Statutory Compliance</h2>
+            <div class="title-line"></div>
+        </div>
+        <div class="compliance-grid" data-animate="fade-up">
+            <div class="comp-card"><div class="comp-check"><i class="fas fa-check"></i></div><span>CIPC Registered & Active</span></div>
+            <div class="comp-card"><div class="comp-check"><i class="fas fa-check"></i></div><span>SARS Tax Registered</span></div>
+            <div class="comp-card"><div class="comp-check"><i class="fas fa-check"></i></div><span>CSD Active Supplier</span></div>
+            <div class="comp-card"><div class="comp-check"><i class="fas fa-check"></i></div><span>FNB Business Account Active</span></div>
+            <div class="comp-card"><div class="comp-check"><i class="fas fa-check"></i></div><span>B-BBEE Level 1 (135%)</span></div>
+            <div class="comp-card"><div class="comp-check"><i class="fas fa-check"></i></div><span>100% Black Owned</span></div>
+            <div class="comp-card"><div class="comp-check"><i class="fas fa-check"></i></div><span>SAIPA Accounting Officer</span></div>
+            <div class="comp-card"><div class="comp-check"><i class="fas fa-check"></i></div><span>Qualifying Small Enterprise</span></div>
+        </div>
+
+        <div class="doc-list" data-animate="fade-up">
+            <h3><i class="fas fa-folder-open"></i> Supporting Documents (Available on Request)</h3>
+            <div class="doc-grid">
+                <div class="doc-item"><i class="fas fa-file-pdf"></i> CK1 – Certificate of Incorporation (2005)</div>
+                <div class="doc-item"><i class="fas fa-file-pdf"></i> CK2A – Amended Founding Statement (2013 & 2016)</div>
+                <div class="doc-item"><i class="fas fa-file-pdf"></i> CSD Registration Report</div>
+                <div class="doc-item"><i class="fas fa-file-pdf"></i> B-BBEE Sworn Affidavit (Level 1)</div>
+                <div class="doc-item"><i class="fas fa-file-pdf"></i> FNB Bank Confirmation Letter</div>
+                <div class="doc-item"><i class="fas fa-file-pdf"></i> Letter of Acknowledgement – Mogale City</div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- WHY US -->
-<section id="why">
-  <div class="section-title">
-    <p>The Difference</p>
-    <h2>Why Choose Us?</h2>
-  </div>
-  <div class="why-grid">
-    <div class="why-card"><div class="num">01</div><h3>20 Years Experience</h3><p>Established in 2005, with two decades of proven service delivery.</p></div>
-    <div class="why-card"><div class="num">02</div><h3>Maximum B-BBEE Points</h3><p>Level 1 / 135% Procurement Recognition boosts your scorecard.</p></div>
-    <div class="why-card"><div class="num">03</div><h3>Government Track Record</h3><p>Trusted by Public Works, SAPS, SANDF, SASSA, DHET & municipalities.</p></div>
-    <div class="why-card"><div class="num">04</div><h3>Multi-Disciplinary</h3><p>One service provider for construction, supply, catering & more.</p></div>
-    <div class="why-card"><div class="num">05</div><h3>Tender Ready</h3><p>CSD registered, FNB banked, and fully compliant.</p></div>
-    <div class="why-card"><div class="num">06</div><h3>Owner-Managed</h3><p>Direct accountability from the Founder, every step of the way.</p></div>
-  </div>
+<section id="why" class="section section-red">
+    <div class="container">
+        <div class="section-header" data-animate="fade-up">
+            <span class="section-tag light">THE DIFFERENCE</span>
+            <h2 class="section-title light">Why Choose Us?</h2>
+            <div class="title-line center light"></div>
+        </div>
+        <div class="why-grid" data-animate="fade-up">
+            <div class="why-card">
+                <div class="why-num">01</div>
+                <h3>20 Years Experience</h3>
+                <p>Established in 2005, with two decades of proven, continuous service delivery to government and private sector.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-num">02</div>
+                <h3>Maximum B-BBEE Points</h3>
+                <p>Level 1 contributor with 135% procurement recognition — maximizes your scorecard points.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-num">03</div>
+                <h3>Government Track Record</h3>
+                <p>Trusted by Public Works, SAPS, SANDF, SASSA, DHET and local municipalities.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-num">04</div>
+                <h3>Multi-Disciplinary</h3>
+                <p>One service provider for 7 different sectors — construction, supply, transport, catering and more.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-num">05</div>
+                <h3>Fully Tender Ready</h3>
+                <p>CSD registered, FNB banked, SARS compliant, and all documentation up to date.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-num">06</div>
+                <h3>Owner-Managed</h3>
+                <p>Direct accountability from the Founder, Mr. Collen Maraba, at every stage of every project.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
-  <div class="section-title">
-    <p>Get in Touch</p>
-    <h2>Contact Us</h2>
-  </div>
-  <div class="contact-card">
-    <h3>Mr. Collen Louis Maraba</h3>
-    <div class="role">Founder & Managing Member</div>
-    <div class="contact-info">
-      <div class="item"><div class="lbl">Mobile</div><div class="val">083 527 5278</div></div>
-      <div class="item"><div class="lbl">Telephone</div><div class="val">014 577 5911 / 5910</div></div>
-      <div class="item"><div class="lbl">Email</div><div class="val">collenlouis@gmail.com</div></div>
-      <div class="item"><div class="lbl">Postal</div><div class="val">P.O. Box 438, Magaliesburg, 1791</div></div>
-      <div class="item" style="grid-column: 1 / -1;"><div class="lbl">Physical Address</div><div class="val">Portion 80, Doornkloof, Magaliesburg, North West, 1791</div></div>
+<section id="contact" class="section section-dark">
+    <div class="container">
+        <div class="section-header" data-animate="fade-up">
+            <span class="section-tag light">GET IN TOUCH</span>
+            <h2 class="section-title light">Contact Us</h2>
+            <div class="title-line center light"></div>
+        </div>
+        <div class="contact-wrapper" data-animate="fade-up">
+            <div class="contact-info-grid">
+                <div class="contact-card-item">
+                    <div class="contact-icon"><i class="fas fa-user"></i></div>
+                    <h4>Mr. Collen Louis Maraba</h4>
+                    <p>Founder & Managing Member</p>
+                </div>
+                <div class="contact-card-item">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <h4>Call Us</h4>
+                    <p><a href="tel:+27835275278">083 527 5278</a></p>
+                    <p><a href="tel:+27145775911">014 577 5911 / 5910</a></p>
+                </div>
+                <div class="contact-card-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <h4>Email Us</h4>
+                    <p><a href="mailto:collenlouis@gmail.com">collenlouis@gmail.com</a></p>
+                </div>
+                <div class="contact-card-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h4>Visit Us</h4>
+                    <p>Portion 80, Doornkloof</p>
+                    <p>Magaliesburg, North West, 1791</p>
+                </div>
+                <div class="contact-card-item">
+                    <div class="contact-icon"><i class="fas fa-mailbox"></i></div>
+                    <h4>Post</h4>
+                    <p>P.O. Box 438</p>
+                    <p>Magaliesburg, 1791</p>
+                </div>
+                <div class="contact-card-item">
+                    <div class="contact-icon"><i class="fas fa-university"></i></div>
+                    <h4>Bank</h4>
+                    <p>FNB Business Account</p>
+                    <p>Acc: 62080773221</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  © 2025 <span>Uptown Trading 460 CC</span> | Reg. 2005/011222/23 | All Rights Reserved
-  <br><br>
-  Designed as a tender-ready company portfolio.
+    <div class="footer-container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <svg class="footer-logo" viewBox="0 0 50 30" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 5 3 L 5 20 Q 5 27 15 27 Q 25 27 25 20 L 25 3 L 21 3 L 21 20 Q 21 23 15 23 Q 9 23 9 20 L 9 3 Z" fill="#C8202A"/>
+                    <rect x="10" y="7" width="10" height="15" fill="white" rx="0.5"/>
+                    <rect x="11.5" y="9" width="2" height="2" fill="#C8202A"/>
+                    <rect x="14.5" y="9" width="2" height="2" fill="#C8202A"/>
+                    <rect x="17.5" y="9" width="2" height="2" fill="#C8202A"/>
+                </svg>
+                <div>
+                    <strong>UPTOWN TRADING 460 CC</strong>
+                    <span>Reg. 2005/011222/23</span>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="#cover">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#track">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Uptown Trading 460 CC. All Rights Reserved. | 100% Black Owned | Level 1 B-BBEE</p>
+        </div>
+    </div>
 </footer>
 
-<script>
-  // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-      document.querySelector('nav ul').classList.remove('show');
-    });
-  });
-</script>
+<button id="backToTop" class="back-to-top" title="Back to top">
+    <i class="fas fa-arrow-up"></i>
+</button>
 
+<script src="script.js"></script>
 </body>
 </html>
