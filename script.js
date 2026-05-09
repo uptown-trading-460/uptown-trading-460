@@ -1,17 +1,19 @@
-/* UPTOWN TRADING 460 CC - Portfolio JavaScript */
+/* UPTOWN TRADING 460 CC - JavaScript */
 
 document.addEventListener('DOMContentLoaded', function() {
 
     // PRELOADER
     const preloader = document.getElementById('preloader');
-    window.addEventListener('load', function() {
+    if (preloader) {
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                preloader.classList.add('hidden');
+            }, 2500);
+        });
         setTimeout(function() {
             preloader.classList.add('hidden');
-        }, 2500);
-    });
-    setTimeout(function() {
-        preloader.classList.add('hidden');
-    }, 4000);
+        }, 4000);
+    }
 
     // NAVBAR SCROLL
     const navbar = document.getElementById('navbar');
@@ -19,47 +21,55 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('scroll', function() {
         const scrollY = window.scrollY;
-        if (scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+        if (navbar) {
+            if (scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         }
-        if (scrollY > 500) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
+        if (backToTop) {
+            if (scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
         }
     });
 
     // BACK TO TOP
-    backToTop.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    if (backToTop) {
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
     // MOBILE MENU
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
 
-    menuToggle.addEventListener('click', function() {
-        menuToggle.classList.toggle('active');
-        navLinks.classList.toggle('show');
-    });
-
-    document.querySelectorAll('.nav-links a').forEach(function(link) {
-        link.addEventListener('click', function() {
-            menuToggle.classList.remove('active');
-            navLinks.classList.remove('show');
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('show');
         });
-    });
+
+        document.querySelectorAll('.nav-links a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('show');
+            });
+        });
+    }
 
     // SMOOTH SCROLL
     document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             if (href === '#') return;
-            e.preventDefault();
             const target = document.querySelector(href);
             if (target) {
+                e.preventDefault();
                 target.scrollIntoView({ behavior: 'smooth' });
             }
         });
@@ -81,8 +91,8 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // COUNTER ANIMATION
-    const statNums = document.querySelectorAll('.stat-num[data-count]');
+    // COUNTER ANIMATION (works for both .stat-num and .stat-number)
+    const statNums = document.querySelectorAll('[data-count]');
 
     const counterObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
@@ -124,7 +134,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                 document.querySelectorAll('.nav-links a').forEach(function(link) {
-                    link.style.color = '';
+                    if (!link.classList.contains('active')) {
+                        link.style.color = '';
+                    }
                     if (link.getAttribute('href') === '#' + sectionId) {
                         link.style.color = '#C8202A';
                     }
@@ -134,6 +146,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     console.log('%c UPTOWN TRADING 460 CC ', 'background: #C8202A; color: white; font-size: 20px; padding: 10px; border-radius: 5px;');
-    console.log('%c Portfolio loaded successfully! ', 'color: #1A1A2E; font-size: 14px;');
+    console.log('%c Building South Africa\'s Future ', 'color: #1A1A2E; font-size: 14px;');
 
 });
