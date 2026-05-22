@@ -27,15 +27,23 @@
 | Ownership | 100% Black Owned |
 | Established | 02 February 2005 |
 
-## 🛠️ Services (18 service areas)
+## 🛠️ Services
 
-1. 🏗️ Construction & Building
-2. 🚧 Civil Works
-3. 🚚 Transport & Logistics
-4. 📦 General Supply
-5. 🍽️ Catering Services
+1. ⛏️ **Mining Industry Supply** *(Equipment, Lubricants, PPE, Consumables, Batteries, Tyres, General Industrial Solutions)*
+2. 🏗️ Construction & Building
+3. 🚧 Civil Works
+4. 🚚 Transport & Logistics
+5. 📦 General Supply
 6. ✂️ Sewing & Textiles
 7. 🌳 Landscaping
+
+## ⛏️ Mining Industry References
+
+| Mining Operation | Contact |
+|---|---|
+| **Bathopele Platinum Mine** | 082 564 8971 |
+| **Waterval Chrome Mine (Cybo)** | 014 597 8047 |
+| **Aquarius Platinum (SA) Pty Ltd** | Mining Partner |
 
 ## 🏛️ Government Track Record
 
@@ -47,6 +55,8 @@
 - Mogale City Local Municipality
 
 ## 📞 Contact
+
+**Official Business Email:** uptown.trading460@gmail.com
 
 **Collen Maraba** — Founder & Managing Member
 - 📱 083 527 5278
