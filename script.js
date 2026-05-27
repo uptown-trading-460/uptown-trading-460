@@ -1,4 +1,4 @@
-/* UPTOWN TRADING 460 CC - JavaScript */
+/* UPTOWN TRADING 460 CC - Modern JavaScript */
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -6,13 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const preloader = document.getElementById('preloader');
     if (preloader) {
         window.addEventListener('load', function() {
-            setTimeout(function() {
-                preloader.classList.add('hidden');
-            }, 2500);
+            setTimeout(function() { preloader.classList.add('hidden'); }, 1500);
         });
-        setTimeout(function() {
-            preloader.classList.add('hidden');
-        }, 4000);
+        setTimeout(function() { preloader.classList.add('hidden'); }, 3000);
     }
 
     // NAVBAR SCROLL
@@ -22,18 +18,12 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', function() {
         const scrollY = window.scrollY;
         if (navbar) {
-            if (scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+            if (scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
         }
         if (backToTop) {
-            if (scrollY > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
+            if (scrollY > 500) backToTop.classList.add('visible');
+            else backToTop.classList.remove('visible');
         }
     });
 
@@ -47,13 +37,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // MOBILE MENU
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
-
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', function() {
             menuToggle.classList.toggle('active');
             navLinks.classList.toggle('show');
         });
-
         document.querySelectorAll('.nav-links a').forEach(function(link) {
             link.addEventListener('click', function() {
                 menuToggle.classList.remove('active');
@@ -75,9 +63,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // SERVICE TABS
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const tabName = this.getAttribute('data-tab');
+
+            // Remove active from all
+            tabBtns.forEach(function(b) { b.classList.remove('active'); });
+            tabContents.forEach(function(c) { c.classList.remove('active'); });
+
+            // Add active to clicked
+            this.classList.add('active');
+            const targetTab = document.getElementById('tab-' + tabName);
+            if (targetTab) targetTab.classList.add('active');
+        });
+    });
+
+    // HERO SLIDESHOW
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    if (heroSlides.length > 1) {
+        let currentSlide = 0;
+        setInterval(function() {
+            heroSlides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % heroSlides.length;
+            heroSlides[currentSlide].classList.add('active');
+        }, 6000);
+    }
+
     // SCROLL ANIMATIONS
     const animatedElements = document.querySelectorAll('[data-animate]');
-
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {
@@ -85,15 +102,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 observer.unobserve(entry.target);
             }
         });
-    }, { root: null, rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
+    }, { rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
 
-    animatedElements.forEach(function(el) {
-        observer.observe(el);
-    });
+    animatedElements.forEach(function(el) { observer.observe(el); });
 
-    // COUNTER ANIMATION (works for both .stat-num and .stat-number)
+    // COUNTER ANIMATION
     const statNums = document.querySelectorAll('[data-count]');
-
     const counterObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {
@@ -102,7 +116,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 let count = 0;
                 const duration = 2000;
                 const increment = countTo / (duration / 16);
-
                 const timer = setInterval(function() {
                     count += increment;
                     if (count >= countTo) {
@@ -111,41 +124,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                     target.textContent = Math.floor(count);
                 }, 16);
-
                 counterObserver.unobserve(target);
             }
         });
     }, { threshold: 0.5 });
+    statNums.forEach(function(num) { counterObserver.observe(num); });
 
-    statNums.forEach(function(num) {
-        counterObserver.observe(num);
-    });
-
-    // ACTIVE NAV LINK
-    const sections = document.querySelectorAll('section[id]');
-
-    window.addEventListener('scroll', function() {
-        const scrollPosition = window.scrollY + 100;
-
-        sections.forEach(function(section) {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                document.querySelectorAll('.nav-links a').forEach(function(link) {
-                    if (!link.classList.contains('active')) {
-                        link.style.color = '';
-                    }
-                    if (link.getAttribute('href') === '#' + sectionId) {
-                        link.style.color = '#C8202A';
-                    }
-                });
-            }
+    // LAZY LOAD IMAGES
+    if ('loading' in HTMLImageElement.prototype) {
+        document.querySelectorAll('img[loading="lazy"]').forEach(function(img) {
+            img.src = img.src;
         });
-    });
+    }
 
-    console.log('%c UPTOWN TRADING 460 CC ', 'background: #C8202A; color: white; font-size: 20px; padding: 10px; border-radius: 5px;');
-    console.log('%c Building South Africa\'s Future ', 'color: #1A1A2E; font-size: 14px;');
-
+    console.log('%c UPTOWN TRADING 460 CC ', 'background:#C8202A;color:white;font-size:20px;padding:10px;border-radius:5px;');
+    console.log('%c Building South Africa\'s Future ', 'color:#1A1A2E;font-size:14px;');
 });
