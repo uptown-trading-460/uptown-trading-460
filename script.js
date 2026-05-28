@@ -25,28 +25,54 @@ document.addEventListener('DOMContentLoaded', function() {
         'trucks-sa': [
             'https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&w=800',
             'https://images.pexels.com/photos/1117210/pexels-photo-1117210.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/1119542/pexels-photo-1119542.jpeg?auto=compress&w=800'
+            'https://images.pexels.com/photos/1119542/pexels-photo-1119542.jpeg?auto=compress&w=800',
+            'https://images.pexels.com/photos/906982/pexels-photo-906982.jpeg?auto=compress&w=800'
+        ],
+        // PPE - Worker overalls only fallbacks
+        'ppe-overalls': [
+            'https://images.pexels.com/photos/8961069/pexels-photo-8961069.jpeg?auto=compress&w=800',
+            'https://images.pexels.com/photos/4480505/pexels-photo-4480505.jpeg?auto=compress&w=800',
+            'https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&w=800'
         ],
         ppe: [
             'https://images.pexels.com/photos/8961069/pexels-photo-8961069.jpeg?auto=compress&w=800',
             'https://images.pexels.com/photos/4480505/pexels-photo-4480505.jpeg?auto=compress&w=800',
             'https://images.pexels.com/photos/8961008/pexels-photo-8961008.jpeg?auto=compress&w=800'
         ],
+        // Lubricants - Oil drums fallbacks
+        'lubricants-drums': [
+            'https://images.pexels.com/photos/3855962/pexels-photo-3855962.jpeg?auto=compress&w=800',
+            'https://images.pexels.com/photos/5980585/pexels-photo-5980585.jpeg?auto=compress&w=800',
+            'https://images.pexels.com/photos/6794954/pexels-photo-6794954.jpeg?auto=compress&w=800'
+        ],
         lubricants: [
             'https://images.pexels.com/photos/3855962/pexels-photo-3855962.jpeg?auto=compress&w=800',
             'https://images.pexels.com/photos/5980585/pexels-photo-5980585.jpeg?auto=compress&w=800',
             'https://images.pexels.com/photos/162568/oil-pump-jack-sunset-clouds-silhouette-162568.jpeg?auto=compress&w=800'
+        ],
+        // Batteries - Actual car/truck battery fallbacks
+        'batteries-actual': [
+            'https://images.pexels.com/photos/110844/pexels-photo-110844.jpeg?auto=compress&w=800',
+            'https://images.pexels.com/photos/8775288/pexels-photo-8775288.jpeg?auto=compress&w=800',
+            'https://images.pexels.com/photos/9800015/pexels-photo-9800015.jpeg?auto=compress&w=800'
         ],
         batteries: [
             'https://images.pexels.com/photos/110844/pexels-photo-110844.jpeg?auto=compress&w=800',
             'https://images.pexels.com/photos/8775288/pexels-photo-8775288.jpeg?auto=compress&w=800',
             'https://images.pexels.com/photos/9800015/pexels-photo-9800015.jpeg?auto=compress&w=800'
         ],
+        // Tyres - Stacked tyres no humans fallbacks
+        'tyres-stacked': [
+            'https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg?auto=compress&w=800',
+            'https://images.pexels.com/photos/2127733/pexels-photo-2127733.jpeg?auto=compress&w=800',
+            'https://images.pexels.com/photos/1119542/pexels-photo-1119542.jpeg?auto=compress&w=800'
+        ],
         tyres: [
             'https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg?auto=compress&w=800',
             'https://images.pexels.com/photos/1119542/pexels-photo-1119542.jpeg?auto=compress&w=800',
             'https://images.pexels.com/photos/2127733/pexels-photo-2127733.jpeg?auto=compress&w=800'
         ],
+        // Mining equipment - drilling & heavy machinery fallbacks
         'mining-equipment': [
             'https://images.pexels.com/photos/2058128/pexels-photo-2058128.jpeg?auto=compress&w=800',
             'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&w=800',
@@ -57,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'https://images.pexels.com/photos/2480807/pexels-photo-2480807.jpeg?auto=compress&w=800',
             'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&w=800'
         ],
+        // Consumables - water and real consumables fallbacks
         consumables: [
             'https://images.pexels.com/photos/1000084/pexels-photo-1000084.jpeg?auto=compress&w=800',
             'https://images.pexels.com/photos/1797428/pexels-photo-1797428.jpeg?auto=compress&w=800',
@@ -101,9 +128,13 @@ document.addEventListener('DOMContentLoaded', function() {
             construction: '#FF6B35',
             trucks: '#2C5F2D',
             'trucks-sa': '#2C5F2D',
+            'ppe-overalls': '#F4A261',
             ppe: '#F4A261',
+            'lubricants-drums': '#2A9D8F',
             lubricants: '#2A9D8F',
+            'batteries-actual': '#264653',
             batteries: '#264653',
+            'tyres-stacked': '#1A1A2E',
             tyres: '#1A1A2E',
             'mining-equipment': '#E76F51',
             'mining-drill': '#E76F51',
