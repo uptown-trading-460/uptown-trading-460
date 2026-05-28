@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // ============================================
     // IMAGE FALLBACK SYSTEM
     // ============================================
-    // If an image fails to load, this replaces it with a category-matched backup
 
     const imageFallbacks = {
         mining: [
@@ -21,8 +20,12 @@ document.addEventListener('DOMContentLoaded', function() {
         trucks: [
             'https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&w=800',
             'https://images.pexels.com/photos/1117210/pexels-photo-1117210.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/1119542/pexels-photo-1119542.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&w=800'
+            'https://images.pexels.com/photos/1119542/pexels-photo-1119542.jpeg?auto=compress&w=800'
+        ],
+        'trucks-sa': [
+            'https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&w=800',
+            'https://images.pexels.com/photos/1117210/pexels-photo-1117210.jpeg?auto=compress&w=800',
+            'https://images.pexels.com/photos/1119542/pexels-photo-1119542.jpeg?auto=compress&w=800'
         ],
         ppe: [
             'https://images.pexels.com/photos/8961069/pexels-photo-8961069.jpeg?auto=compress&w=800',
@@ -30,9 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
             'https://images.pexels.com/photos/8961008/pexels-photo-8961008.jpeg?auto=compress&w=800'
         ],
         lubricants: [
-            'https://images.pexels.com/photos/162568/oil-pump-jack-sunset-clouds-silhouette-162568.jpeg?auto=compress&w=800',
             'https://images.pexels.com/photos/3855962/pexels-photo-3855962.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/5980585/pexels-photo-5980585.jpeg?auto=compress&w=800'
+            'https://images.pexels.com/photos/5980585/pexels-photo-5980585.jpeg?auto=compress&w=800',
+            'https://images.pexels.com/photos/162568/oil-pump-jack-sunset-clouds-silhouette-162568.jpeg?auto=compress&w=800'
         ],
         batteries: [
             'https://images.pexels.com/photos/110844/pexels-photo-110844.jpeg?auto=compress&w=800',
@@ -43,6 +46,21 @@ document.addEventListener('DOMContentLoaded', function() {
             'https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg?auto=compress&w=800',
             'https://images.pexels.com/photos/1119542/pexels-photo-1119542.jpeg?auto=compress&w=800',
             'https://images.pexels.com/photos/2127733/pexels-photo-2127733.jpeg?auto=compress&w=800'
+        ],
+        'mining-equipment': [
+            'https://images.pexels.com/photos/2058128/pexels-photo-2058128.jpeg?auto=compress&w=800',
+            'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&w=800',
+            'https://images.pexels.com/photos/162568/oil-pump-jack-sunset-clouds-silhouette-162568.jpeg?auto=compress&w=800'
+        ],
+        'mining-drill': [
+            'https://images.pexels.com/photos/2058128/pexels-photo-2058128.jpeg?auto=compress&w=800',
+            'https://images.pexels.com/photos/2480807/pexels-photo-2480807.jpeg?auto=compress&w=800',
+            'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&w=800'
+        ],
+        consumables: [
+            'https://images.pexels.com/photos/1000084/pexels-photo-1000084.jpeg?auto=compress&w=800',
+            'https://images.pexels.com/photos/1797428/pexels-photo-1797428.jpeg?auto=compress&w=800',
+            'https://images.pexels.com/photos/4481532/pexels-photo-4481532.jpeg?auto=compress&w=800'
         ],
         equipment: [
             'https://images.pexels.com/photos/162568/oil-pump-jack-sunset-clouds-silhouette-162568.jpeg?auto=compress&w=800',
@@ -69,11 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
             'https://images.pexels.com/photos/2218661/pexels-photo-2218661.jpeg?auto=compress&w=800',
             'https://images.pexels.com/photos/210095/pexels-photo-210095.jpeg?auto=compress&w=800'
         ],
-        landscape: [
-            'https://images.pexels.com/photos/431944/pexels-photo-431944.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/210509/pexels-photo-210509.jpeg?auto=compress&w=800'
-        ],
         industrial: [
             'https://images.pexels.com/photos/162568/oil-pump-jack-sunset-clouds-silhouette-162568.jpeg?auto=compress&w=800',
             'https://images.pexels.com/photos/2058128/pexels-photo-2058128.jpeg?auto=compress&w=800',
@@ -87,16 +100,19 @@ document.addEventListener('DOMContentLoaded', function() {
             mining: '#1A1A2E',
             construction: '#FF6B35',
             trucks: '#2C5F2D',
+            'trucks-sa': '#2C5F2D',
             ppe: '#F4A261',
             lubricants: '#2A9D8F',
             batteries: '#264653',
             tyres: '#1A1A2E',
+            'mining-equipment': '#E76F51',
+            'mining-drill': '#E76F51',
+            consumables: '#457B9D',
             equipment: '#E76F51',
             warehouse: '#457B9D',
             supplies: '#1D3557',
             tools: '#6A040F',
             civil: '#370617',
-            landscape: '#52B788',
             industrial: '#003049'
         };
         const color = colors[category] || '#1A1A2E';
@@ -134,12 +150,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const fallbacks = imageFallbacks[category] || imageFallbacks.industrial;
 
             if (counter < fallbacks.length) {
-                // Try next fallback
                 console.log('Image fallback ' + (counter + 1) + ' for: ' + altText);
                 this.src = fallbacks[counter];
                 fallbackCounter.set(this, counter + 1);
             } else {
-                // All fallbacks exhausted - use SVG placeholder
                 console.log('Using SVG placeholder for: ' + altText);
                 this.src = generatePlaceholder(category, altText);
                 this.removeEventListener('error', arguments.callee);
@@ -150,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Apply fallback to all images
     document.querySelectorAll('img[data-category]').forEach(setupImageFallback);
 
-    // Also handle background images on hero slides
+    // Handle background images on hero slides
     document.querySelectorAll('.hero-slide').forEach(function(slide) {
         const bgUrl = slide.style.backgroundImage.replace(/url\(["']?([^"']*)["']?\)/, '$1');
         if (bgUrl && bgUrl !== 'none') {
