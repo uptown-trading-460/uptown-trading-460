@@ -7,139 +7,133 @@ document.addEventListener('DOMContentLoaded', function() {
     // ============================================
 
     const imageFallbacks = {
+
+        // Mining
         mining: [
-            'https://images.pexels.com/photos/2058128/pexels-photo-2058128.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/2480807/pexels-photo-2480807.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/162568/oil-pump-jack-sunset-clouds-silhouette-162568.jpeg?auto=compress&w=800'
-        ],
-        construction: [
-            'https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/210095/pexels-photo-210095.jpeg?auto=compress&w=800'
-        ],
-        trucks: [
-            'https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/1117210/pexels-photo-1117210.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/1119542/pexels-photo-1119542.jpeg?auto=compress&w=800'
-        ],
-        'trucks-sa': [
-            'https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/1117210/pexels-photo-1117210.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/1119542/pexels-photo-1119542.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/906982/pexels-photo-906982.jpeg?auto=compress&w=800'
-        ],
-        // PPE - Worker overalls only fallbacks
-        'ppe-overalls': [
-            'https://images.pexels.com/photos/8961069/pexels-photo-8961069.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/4480505/pexels-photo-4480505.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&w=800'
-        ],
-        ppe: [
-            'https://images.pexels.com/photos/8961069/pexels-photo-8961069.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/4480505/pexels-photo-4480505.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/8961008/pexels-photo-8961008.jpeg?auto=compress&w=800'
-        ],
-        // Lubricants - Oil drums fallbacks
-        'lubricants-drums': [
-            'https://images.pexels.com/photos/3855962/pexels-photo-3855962.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/5980585/pexels-photo-5980585.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/6794954/pexels-photo-6794954.jpeg?auto=compress&w=800'
-        ],
-        lubricants: [
-            'https://images.pexels.com/photos/3855962/pexels-photo-3855962.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/5980585/pexels-photo-5980585.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/162568/oil-pump-jack-sunset-clouds-silhouette-162568.jpeg?auto=compress&w=800'
-        ],
-        // Batteries - Actual car/truck battery fallbacks
-        'batteries-actual': [
-            'https://images.pexels.com/photos/110844/pexels-photo-110844.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/8775288/pexels-photo-8775288.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/9800015/pexels-photo-9800015.jpeg?auto=compress&w=800'
-        ],
-        batteries: [
-            'https://images.pexels.com/photos/110844/pexels-photo-110844.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/8775288/pexels-photo-8775288.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/9800015/pexels-photo-9800015.jpeg?auto=compress&w=800'
-        ],
-        // Tyres - Stacked tyres no humans fallbacks
-        'tyres-stacked': [
-            'https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/2127733/pexels-photo-2127733.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/1119542/pexels-photo-1119542.jpeg?auto=compress&w=800'
-        ],
-        tyres: [
-            'https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/1119542/pexels-photo-1119542.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/2127733/pexels-photo-2127733.jpeg?auto=compress&w=800'
-        ],
-        // Mining equipment - drilling & heavy machinery fallbacks
-        'mining-equipment': [
-            'https://images.pexels.com/photos/2058128/pexels-photo-2058128.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/162568/oil-pump-jack-sunset-clouds-silhouette-162568.jpeg?auto=compress&w=800'
+            'https://images.pexels.com/photos/2058128/pexels-photo-2058128.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/2480807/pexels-photo-2480807.jpeg?auto=compress&cs=tinysrgb&w=800'
         ],
         'mining-drill': [
-            'https://images.pexels.com/photos/2058128/pexels-photo-2058128.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/2480807/pexels-photo-2480807.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&w=800'
+            'https://images.pexels.com/photos/2058128/pexels-photo-2058128.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/2480807/pexels-photo-2480807.jpeg?auto=compress&cs=tinysrgb&w=800'
         ],
-        // Consumables - water and real consumables fallbacks
+        'mining-equipment': [
+            'https://images.pexels.com/photos/2058128/pexels-photo-2058128.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/2480807/pexels-photo-2480807.jpeg?auto=compress&cs=tinysrgb&w=800'
+        ],
+
+        // Construction
+        construction: [
+            'https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800'
+        ],
+
+        // South African Trucks
+        trucks: [
+            'https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/1117210/pexels-photo-1117210.jpeg?auto=compress&cs=tinysrgb&w=800'
+        ],
+        'trucks-sa': [
+            'https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/1117210/pexels-photo-1117210.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/906982/pexels-photo-906982.jpeg?auto=compress&cs=tinysrgb&w=800'
+        ],
+
+        // PPE - Blue conti suit overalls fallbacks
+        'ppe-overalls': [
+            'https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/8961069/pexels-photo-8961069.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/4480505/pexels-photo-4480505.jpeg?auto=compress&cs=tinysrgb&w=800'
+        ],
+        ppe: [
+            'https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/8961069/pexels-photo-8961069.jpeg?auto=compress&cs=tinysrgb&w=800'
+        ],
+
+        // Lubricants - Oil drums and cans fallbacks
+        'lubricants-drums': [
+            'https://images.pexels.com/photos/6794954/pexels-photo-6794954.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/3855962/pexels-photo-3855962.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/5980585/pexels-photo-5980585.jpeg?auto=compress&cs=tinysrgb&w=800'
+        ],
+        lubricants: [
+            'https://images.pexels.com/photos/6794954/pexels-photo-6794954.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/3855962/pexels-photo-3855962.jpeg?auto=compress&cs=tinysrgb&w=800'
+        ],
+
+        // Batteries - actual car/truck battery fallbacks
+        'batteries-actual': [
+            'https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/110844/pexels-photo-110844.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/8775288/pexels-photo-8775288.jpeg?auto=compress&cs=tinysrgb&w=800'
+        ],
+        batteries: [
+            'https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/110844/pexels-photo-110844.jpeg?auto=compress&cs=tinysrgb&w=800'
+        ],
+
+        // Tyres - stacked tyres no humans fallbacks
+        'tyres-stacked': [
+            'https://images.pexels.com/photos/1689085/pexels-photo-1689085.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/2127733/pexels-photo-2127733.jpeg?auto=compress&cs=tinysrgb&w=800'
+        ],
+        tyres: [
+            'https://images.pexels.com/photos/1689085/pexels-photo-1689085.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg?auto=compress&cs=tinysrgb&w=800'
+        ],
+
+        // Consumables
         consumables: [
-            'https://images.pexels.com/photos/1000084/pexels-photo-1000084.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/1797428/pexels-photo-1797428.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/4481532/pexels-photo-4481532.jpeg?auto=compress&w=800'
+            'https://images.pexels.com/photos/1000084/pexels-photo-1000084.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/1797428/pexels-photo-1797428.jpeg?auto=compress&cs=tinysrgb&w=800'
         ],
-        equipment: [
-            'https://images.pexels.com/photos/162568/oil-pump-jack-sunset-clouds-silhouette-162568.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/3760529/pexels-photo-3760529.jpeg?auto=compress&w=800'
-        ],
+
+        // Warehouse / Supply
         warehouse: [
-            'https://images.pexels.com/photos/1797428/pexels-photo-1797428.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/4481532/pexels-photo-4481532.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/4481260/pexels-photo-4481260.jpeg?auto=compress&w=800'
+            'https://images.pexels.com/photos/1797428/pexels-photo-1797428.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/4481532/pexels-photo-4481532.jpeg?auto=compress&cs=tinysrgb&w=800'
         ],
         supplies: [
-            'https://images.pexels.com/photos/1797428/pexels-photo-1797428.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/4481532/pexels-photo-4481532.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/1796720/pexels-photo-1796720.jpeg?auto=compress&w=800'
+            'https://images.pexels.com/photos/1797428/pexels-photo-1797428.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/1796720/pexels-photo-1796720.jpeg?auto=compress&cs=tinysrgb&w=800'
         ],
         tools: [
-            'https://images.pexels.com/photos/1409216/pexels-photo-1409216.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/175039/pexels-photo-175039.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/3754056/pexels-photo-3754056.jpeg?auto=compress&w=800'
+            'https://images.pexels.com/photos/1409216/pexels-photo-1409216.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/175039/pexels-photo-175039.jpeg?auto=compress&cs=tinysrgb&w=800'
         ],
+
+        // Civil
         civil: [
-            'https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/2218661/pexels-photo-2218661.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/210095/pexels-photo-210095.jpeg?auto=compress&w=800'
+            'https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/2218661/pexels-photo-2218661.jpeg?auto=compress&cs=tinysrgb&w=800'
         ],
+
+        // Industrial (default fallback)
         industrial: [
-            'https://images.pexels.com/photos/162568/oil-pump-jack-sunset-clouds-silhouette-162568.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/2058128/pexels-photo-2058128.jpeg?auto=compress&w=800',
-            'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&w=800'
+            'https://images.pexels.com/photos/2058128/pexels-photo-2058128.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800'
         ]
     };
 
-    // SVG placeholder generator (final fallback)
+    // SVG placeholder generator (absolute final fallback)
     function generatePlaceholder(category, text) {
         const colors = {
             mining: '#1A1A2E',
+            'mining-drill': '#1A1A2E',
+            'mining-equipment': '#E76F51',
             construction: '#FF6B35',
             trucks: '#2C5F2D',
             'trucks-sa': '#2C5F2D',
-            'ppe-overalls': '#F4A261',
-            ppe: '#F4A261',
+            'ppe-overalls': '#1560BD',
+            ppe: '#1560BD',
             'lubricants-drums': '#2A9D8F',
             lubricants: '#2A9D8F',
             'batteries-actual': '#264653',
             batteries: '#264653',
-            'tyres-stacked': '#1A1A2E',
-            tyres: '#1A1A2E',
-            'mining-equipment': '#E76F51',
-            'mining-drill': '#E76F51',
+            'tyres-stacked': '#333333',
+            tyres: '#333333',
             consumables: '#457B9D',
-            equipment: '#E76F51',
             warehouse: '#457B9D',
             supplies: '#1D3557',
             tools: '#6A040F',
@@ -147,26 +141,24 @@ document.addEventListener('DOMContentLoaded', function() {
             industrial: '#003049'
         };
         const color = colors[category] || '#1A1A2E';
-        const label = (text || category || 'Image').toUpperCase();
+        const label = (text || category || 'Image').toUpperCase().substring(0, 20);
 
-        const svg = `
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
-                <defs>
-                    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="${color}"/>
-                        <stop offset="100%" stop-color="#C8202A"/>
-                    </linearGradient>
-                </defs>
-                <rect width="800" height="600" fill="url(#g)"/>
-                <circle cx="400" cy="250" r="80" fill="white" opacity="0.1"/>
-                <text x="400" y="320" font-family="Arial,sans-serif" font-size="36" font-weight="900" fill="white" text-anchor="middle">${label}</text>
-                <text x="400" y="370" font-family="Arial,sans-serif" font-size="18" fill="white" opacity="0.8" text-anchor="middle">UPTOWN TRADING 460</text>
-            </svg>
-        `;
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+            <defs>
+                <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="${color}"/>
+                    <stop offset="100%" stop-color="#C8202A"/>
+                </linearGradient>
+            </defs>
+            <rect width="800" height="600" fill="url(#g)"/>
+            <circle cx="400" cy="250" r="80" fill="white" opacity="0.1"/>
+            <text x="400" y="320" font-family="Arial,sans-serif" font-size="32" font-weight="900" fill="white" text-anchor="middle">${label}</text>
+            <text x="400" y="370" font-family="Arial,sans-serif" font-size="16" fill="white" opacity="0.8" text-anchor="middle">UPTOWN TRADING 460</text>
+        </svg>`;
+
         return 'data:image/svg+xml;base64,' + btoa(svg);
     }
 
-    // Track which fallback we're on for each image
     const fallbackCounter = new WeakMap();
 
     function setupImageFallback(img) {
@@ -176,33 +168,31 @@ document.addEventListener('DOMContentLoaded', function() {
         img.addEventListener('error', function() {
             const category = this.getAttribute('data-category') || 'industrial';
             const altText = this.getAttribute('alt') || category;
-
             let counter = fallbackCounter.get(this) || 0;
-            const fallbacks = imageFallbacks[category] || imageFallbacks.industrial;
+            const fallbacks = imageFallbacks[category] || imageFallbacks['industrial'];
 
             if (counter < fallbacks.length) {
-                console.log('Image fallback ' + (counter + 1) + ' for: ' + altText);
+                console.log('Fallback ' + (counter + 1) + ' for [' + category + ']: ' + altText);
                 this.src = fallbacks[counter];
                 fallbackCounter.set(this, counter + 1);
             } else {
-                console.log('Using SVG placeholder for: ' + altText);
+                console.log('SVG placeholder for: ' + altText);
                 this.src = generatePlaceholder(category, altText);
                 this.removeEventListener('error', arguments.callee);
             }
         });
     }
 
-    // Apply fallback to all images
     document.querySelectorAll('img[data-category]').forEach(setupImageFallback);
 
-    // Handle background images on hero slides
+    // Hero slide background fallback
     document.querySelectorAll('.hero-slide').forEach(function(slide) {
         const bgUrl = slide.style.backgroundImage.replace(/url\(["']?([^"']*)["']?\)/, '$1');
         if (bgUrl && bgUrl !== 'none') {
             const testImg = new Image();
             testImg.onerror = function() {
                 const category = slide.getAttribute('data-bg') || 'industrial';
-                const fallbacks = imageFallbacks[category] || imageFallbacks.industrial;
+                const fallbacks = imageFallbacks[category] || imageFallbacks['industrial'];
                 if (fallbacks.length > 0) {
                     slide.style.backgroundImage = 'url("' + fallbacks[0] + '")';
                 }
@@ -291,10 +281,8 @@ document.addEventListener('DOMContentLoaded', function() {
     tabBtns.forEach(function(btn) {
         btn.addEventListener('click', function() {
             const tabName = this.getAttribute('data-tab');
-
             tabBtns.forEach(function(b) { b.classList.remove('active'); });
             tabContents.forEach(function(c) { c.classList.remove('active'); });
-
             this.classList.add('active');
             const targetTab = document.getElementById('tab-' + tabName);
             if (targetTab) targetTab.classList.add('active');
