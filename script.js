@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const imageFallbacks = {
 
-        // Mining
         mining: [
             'https://images.pexels.com/photos/2058128/pexels-photo-2058128.jpeg?auto=compress&cs=tinysrgb&w=800',
             'https://images.pexels.com/photos/2480807/pexels-photo-2480807.jpeg?auto=compress&cs=tinysrgb&w=800'
@@ -22,13 +21,11 @@ document.addEventListener('DOMContentLoaded', function() {
             'https://images.pexels.com/photos/2480807/pexels-photo-2480807.jpeg?auto=compress&cs=tinysrgb&w=800'
         ],
 
-        // Construction
         construction: [
             'https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?auto=compress&cs=tinysrgb&w=800',
             'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800'
         ],
 
-        // South African Trucks
         trucks: [
             'https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=800',
             'https://images.pexels.com/photos/1117210/pexels-photo-1117210.jpeg?auto=compress&cs=tinysrgb&w=800'
@@ -41,38 +38,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // PPE - Blue conti suit overalls fallbacks
         'ppe-overalls': [
-            'https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://www.safety-wears.com/wp-content/uploads/2023/09/Construction-Work-Clothes-text-sucai-2-1024x1007.png',
             'https://images.pexels.com/photos/8961069/pexels-photo-8961069.jpeg?auto=compress&cs=tinysrgb&w=800',
             'https://images.pexels.com/photos/4480505/pexels-photo-4480505.jpeg?auto=compress&cs=tinysrgb&w=800'
         ],
         ppe: [
-            'https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://www.safety-wears.com/wp-content/uploads/2023/09/Construction-Work-Clothes-text-sucai-2-1024x1007.png',
             'https://images.pexels.com/photos/8961069/pexels-photo-8961069.jpeg?auto=compress&cs=tinysrgb&w=800'
         ],
 
-        // Lubricants - Oil drums and cans fallbacks
+        // Lubricants - Exact abro.com image as primary fallback
         'lubricants-drums': [
-            'https://images.pexels.com/photos/6794954/pexels-photo-6794954.jpeg?auto=compress&cs=tinysrgb&w=800',
-            'https://images.pexels.com/photos/3855962/pexels-photo-3855962.jpeg?auto=compress&cs=tinysrgb&w=800',
-            'https://images.pexels.com/photos/5980585/pexels-photo-5980585.jpeg?auto=compress&cs=tinysrgb&w=800'
-        ],
-        lubricants: [
+            'https://abro.com/wp-content/uploads/2020/07/Lubricant-Group-2018.png',
             'https://images.pexels.com/photos/6794954/pexels-photo-6794954.jpeg?auto=compress&cs=tinysrgb&w=800',
             'https://images.pexels.com/photos/3855962/pexels-photo-3855962.jpeg?auto=compress&cs=tinysrgb&w=800'
         ],
+        lubricants: [
+            'https://abro.com/wp-content/uploads/2020/07/Lubricant-Group-2018.png',
+            'https://images.pexels.com/photos/6794954/pexels-photo-6794954.jpeg?auto=compress&cs=tinysrgb&w=800'
+        ],
 
-        // Batteries - actual car/truck battery fallbacks
+        // Batteries - Exact Bing truck battery image as primary fallback
         'batteries-actual': [
-            'https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://tse4.mm.bing.net/th/id/OIP.9Pb6AkqT5Qx4NvdcCj_a2gHaED?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
             'https://images.pexels.com/photos/110844/pexels-photo-110844.jpeg?auto=compress&cs=tinysrgb&w=800',
             'https://images.pexels.com/photos/8775288/pexels-photo-8775288.jpeg?auto=compress&cs=tinysrgb&w=800'
         ],
         batteries: [
-            'https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg?auto=compress&cs=tinysrgb&w=800',
+            'https://tse4.mm.bing.net/th/id/OIP.9Pb6AkqT5Qx4NvdcCj_a2gHaED?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
             'https://images.pexels.com/photos/110844/pexels-photo-110844.jpeg?auto=compress&cs=tinysrgb&w=800'
         ],
 
-        // Tyres - stacked tyres no humans fallbacks
+        // Tyres - Stacked tyres no humans
         'tyres-stacked': [
             'https://images.pexels.com/photos/1689085/pexels-photo-1689085.jpeg?auto=compress&cs=tinysrgb&w=800',
             'https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -83,13 +80,11 @@ document.addEventListener('DOMContentLoaded', function() {
             'https://images.pexels.com/photos/3806249/pexels-photo-3806249.jpeg?auto=compress&cs=tinysrgb&w=800'
         ],
 
-        // Consumables
         consumables: [
             'https://images.pexels.com/photos/1000084/pexels-photo-1000084.jpeg?auto=compress&cs=tinysrgb&w=800',
             'https://images.pexels.com/photos/1797428/pexels-photo-1797428.jpeg?auto=compress&cs=tinysrgb&w=800'
         ],
 
-        // Warehouse / Supply
         warehouse: [
             'https://images.pexels.com/photos/1797428/pexels-photo-1797428.jpeg?auto=compress&cs=tinysrgb&w=800',
             'https://images.pexels.com/photos/4481532/pexels-photo-4481532.jpeg?auto=compress&cs=tinysrgb&w=800'
@@ -102,14 +97,10 @@ document.addEventListener('DOMContentLoaded', function() {
             'https://images.pexels.com/photos/1409216/pexels-photo-1409216.jpeg?auto=compress&cs=tinysrgb&w=800',
             'https://images.pexels.com/photos/175039/pexels-photo-175039.jpeg?auto=compress&cs=tinysrgb&w=800'
         ],
-
-        // Civil
         civil: [
             'https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?auto=compress&cs=tinysrgb&w=800',
             'https://images.pexels.com/photos/2218661/pexels-photo-2218661.jpeg?auto=compress&cs=tinysrgb&w=800'
         ],
-
-        // Industrial (default fallback)
         industrial: [
             'https://images.pexels.com/photos/2058128/pexels-photo-2058128.jpeg?auto=compress&cs=tinysrgb&w=800',
             'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800'
