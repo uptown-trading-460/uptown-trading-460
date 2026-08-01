@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payslip Generator | Uptown Trading 460 CC</title>
-    <meta name="description" content="Free Employee Payslip Generator - Create professional South African payslips instantly. Auto-calculates PAYE, UIF, Pension deductions.">
+    <meta name="description" content="Employee Payslip Generator - Uptown Trading 460 CC.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,6 +39,8 @@
             justify-content: space-between;
             align-items: center;
             color: white;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .top-nav a {
@@ -138,6 +140,33 @@
             border-color: var(--red);
             box-shadow: 0 0 0 3px rgba(200, 32, 42, 0.1);
         }
+
+        /* LOCKED / READ-ONLY FIELDS */
+        .form-group input[readonly] {
+            background: #f0f0f0;
+            color: #666;
+            cursor: not-allowed;
+            border-color: #d0d0d0;
+        }
+
+        .form-group input[readonly]:focus {
+            border-color: #d0d0d0;
+            box-shadow: none;
+        }
+
+        .locked-badge {
+            display: inline-block;
+            background: var(--dark);
+            color: white;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .locked-badge i { margin-right: 4px; font-size: 9px; }
 
         .form-row {
             display: grid;
@@ -348,22 +377,6 @@
             line-height: 1.6;
         }
 
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--gray);
-        }
-
-        .empty-state i {
-            font-size: 60px;
-            color: var(--border);
-            margin-bottom: 20px;
-        }
-
-        .empty-state p {
-            font-size: 14px;
-        }
-
         /* PRINT STYLES */
         @media print {
             body {
@@ -415,39 +428,43 @@
             <span>Auto-calculates PAYE, UIF & Pension based on SA tax rules</span>
         </div>
 
-        <!-- COMPANY INFO -->
+        <!-- COMPANY INFO - LOCKED -->
         <div class="form-section">
-            <div class="form-section-title"><i class="fas fa-building"></i> Company Details</div>
+            <div class="form-section-title">
+                <i class="fas fa-building"></i> Company Details
+                <span class="locked-badge"><i class="fas fa-lock"></i> Locked</span>
+            </div>
             <div class="form-group">
                 <label>Company Name</label>
-                <input type="text" id="companyName" value="Uptown-Trading 460 CC">
+                <input type="text" id="companyName" value="Uptown-Trading 460 CC" readonly>
             </div>
             <div class="form-group">
                 <label>Company Registration</label>
-                <input type="text" id="companyReg" value="2005/011222/23">
+                <input type="text" id="companyReg" value="2005/011222/23" readonly>
             </div>
         </div>
 
-        <!-- EMPLOYEE INFO -->
+        <!-- EMPLOYEE INFO - LOCKED -->
         <div class="form-section">
-            <div class="form-section-title"><i class="fas fa-user"></i> Employee Details</div>
+            <div class="form-section-title">
+                <i class="fas fa-user"></i> Employee Details
+                <span class="locked-badge"><i class="fas fa-lock"></i> Locked</span>
+            </div>
             <div class="form-group">
                 <label>Employee Name</label>
-                <input type="text" id="employeeName" value="Alex Cloete">
+                <input type="text" id="employeeName" value="Alex Cloete" readonly>
             </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Employee Number</label>
-                    <input type="text" id="employeeNo" value="UT460-0027">
-                </div>
-                <div class="form-group">
-                    <label>ID Number (optional)</label>
-                    <input type="text" id="idNumber" placeholder="8001015009087">
-                </div>
+            <div class="form-group">
+                <label>Employee Number</label>
+                <input type="text" id="employeeNo" value="UT460-0027" readonly>
             </div>
             <div class="form-group">
                 <label>Position</label>
-                <input type="text" id="position" value="Business Representative">
+                <input type="text" id="position" value="Business Representative" readonly>
+            </div>
+            <div class="form-group">
+                <label>Bank Account (Last 4 digits)</label>
+                <input type="text" id="bankAccount" value="7447" readonly>
             </div>
         </div>
 
@@ -463,10 +480,6 @@
                     <label>Payment Date</label>
                     <input type="text" id="paymentDate" value="31 July 2026">
                 </div>
-            </div>
-            <div class="form-group">
-                <label>Bank Account (Last 4 digits)</label>
-                <input type="text" id="bankAccount" value="4028" maxlength="4">
             </div>
         </div>
 
@@ -558,7 +571,6 @@
         const grossPay = basic + overtime + transport + cellphone;
 
         // SA 2024/2025 Tax calculation (simplified)
-        // Annual gross
         const annualGross = grossPay * 12;
         let annualTax = 0;
 
@@ -600,7 +612,6 @@
         const companyReg = document.getElementById('companyReg').value;
         const employee = document.getElementById('employeeName').value;
         const empNo = document.getElementById('employeeNo').value;
-        const idNumber = document.getElementById('idNumber').value;
         const position = document.getElementById('position').value;
         const payPeriod = document.getElementById('payPeriod').value;
         const paymentDate = document.getElementById('paymentDate').value;
@@ -649,7 +660,6 @@
                     <strong>Position</strong>
                     <span>${position}</span>
                 </div>
-                ${idNumber ? `<div class="info-item"><strong>ID Number</strong><span>${idNumber}</span></div>` : ''}
                 <div class="info-item">
                     <strong>Pay Period</strong>
                     <span>${payPeriod}</span>
@@ -657,6 +667,10 @@
                 <div class="info-item">
                     <strong>Payment Date</strong>
                     <span>${paymentDate}</span>
+                </div>
+                <div class="info-item">
+                    <strong>Bank Account</strong>
+                    <span>****${bankAccount}</span>
                 </div>
             </div>
 
