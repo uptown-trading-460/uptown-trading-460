@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payslip Generator | Uptown Trading 460 CC</title>
-    <meta name="description" content="Employee Payslip Generator - Uptown Trading 460 CC.">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Payslip | Uptown Trading 460 CC</title>
+    <meta name="description" content="Employee Payslip - Uptown Trading 460 CC.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +32,6 @@
             padding: 20px;
         }
 
-        /* HEADER */
         .top-nav {
             max-width: 1200px;
             margin: 0 auto 30px;
@@ -65,7 +65,6 @@
 
         .top-nav h1 span { color: var(--red); }
 
-        /* MAIN CONTAINER */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -78,7 +77,6 @@
             .container { grid-template-columns: 1fr; }
         }
 
-        /* FORM SIDE */
         .form-panel {
             background: white;
             border-radius: 16px;
@@ -141,7 +139,6 @@
             box-shadow: 0 0 0 3px rgba(200, 32, 42, 0.1);
         }
 
-        /* LOCKED / READ-ONLY FIELDS */
         .form-group input[readonly] {
             background: #f0f0f0;
             color: #666;
@@ -220,7 +217,6 @@
             margin-top: 10px;
         }
 
-        /* PAYSLIP OUTPUT */
         .payslip-panel {
             background: white;
             border-radius: 16px;
@@ -377,7 +373,6 @@
             line-height: 1.6;
         }
 
-        /* PRINT STYLES */
         @media print {
             body {
                 background: white;
@@ -406,6 +401,20 @@
         }
 
         .info-badge i { font-size: 18px; }
+
+        .private-badge {
+            background: linear-gradient(135deg, #dc3545 0%, #a01822 100%);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
     </style>
 </head>
 <body>
@@ -413,7 +422,7 @@
 <!-- TOP NAV -->
 <div class="top-nav">
     <h1>UPTOWN <span>TRADING 460</span></h1>
-    <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Website</a>
+    <span class="private-badge"><i class="fas fa-lock"></i> Private Access Only</span>
 </div>
 
 <!-- MAIN GRID -->
@@ -425,7 +434,7 @@
 
         <div class="info-badge">
             <i class="fas fa-info-circle"></i>
-            <span>Auto-calculates PAYE, UIF & Pension based on SA tax rules</span>
+            <span>Only Pay Period, Payment Date & Amounts are editable</span>
         </div>
 
         <!-- COMPANY INFO - LOCKED -->
@@ -452,7 +461,11 @@
             </div>
             <div class="form-group">
                 <label>Employee Name</label>
-                <input type="text" id="employeeName" value="Alex Cloete" readonly>
+                <input type="text" id="employeeName" value="Alexander Collen Masebe Cloete" readonly>
+            </div>
+            <div class="form-group">
+                <label>ID Number</label>
+                <input type="text" id="idNumber" value="0601305446085" readonly>
             </div>
             <div class="form-group">
                 <label>Employee Number</label>
@@ -489,21 +502,21 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Basic Salary</label>
-                    <input type="number" id="basicSalary" value="11500" step="0.01">
+                    <input type="number" id="basicSalary" value="16042.50" step="0.01">
                 </div>
                 <div class="form-group">
                     <label>Overtime</label>
-                    <input type="number" id="overtime" value="1200" step="0.01">
+                    <input type="number" id="overtime" value="0" step="0.01">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group">
                     <label>Transport Allowance</label>
-                    <input type="number" id="transport" value="850" step="0.01">
+                    <input type="number" id="transport" value="0" step="0.01">
                 </div>
                 <div class="form-group">
                     <label>Cellphone Allowance</label>
-                    <input type="number" id="cellphone" value="450" step="0.01">
+                    <input type="number" id="cellphone" value="0" step="0.01">
                 </div>
             </div>
         </div>
@@ -514,21 +527,21 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>PAYE (Tax)</label>
-                    <input type="number" id="paye" value="1320" step="0.01">
+                    <input type="number" id="paye" value="1042.50" step="0.01">
                 </div>
                 <div class="form-group">
-                    <label>UIF (1%)</label>
-                    <input type="number" id="uif" value="140" step="0.01">
+                    <label>UIF Contribution</label>
+                    <input type="number" id="uif" value="180" step="0.01">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group">
                     <label>Pension Fund</label>
-                    <input type="number" id="pension" value="862.50" step="0.01">
+                    <input type="number" id="pension" value="1203.19" step="0.01">
                 </div>
                 <div class="form-group">
                     <label>Medical Aid</label>
-                    <input type="number" id="medical" value="550" step="0.01">
+                    <input type="number" id="medical" value="0" step="0.01">
                 </div>
             </div>
         </div>
@@ -570,7 +583,7 @@
 
         const grossPay = basic + overtime + transport + cellphone;
 
-        // SA 2024/2025 Tax calculation (simplified)
+        // SA 2024/2025 Tax calculation
         const annualGross = grossPay * 12;
         let annualTax = 0;
 
@@ -586,17 +599,14 @@
             annualTax = 179147 + (annualGross - 673000) * 0.39;
         }
 
-        // Primary rebate
         annualTax -= 17235;
         if (annualTax < 0) annualTax = 0;
 
         const monthlyPAYE = annualTax / 12;
 
-        // UIF - 1% of gross, max R177.12
         let uif = grossPay * 0.01;
         if (uif > 177.12) uif = 177.12;
 
-        // Pension - 7.5% of basic
         const pensionCalc = basic * 0.075;
 
         document.getElementById('paye').value = monthlyPAYE.toFixed(2);
@@ -607,10 +617,10 @@
     }
 
     function generatePayslip() {
-        // Get values
         const company = document.getElementById('companyName').value;
         const companyReg = document.getElementById('companyReg').value;
         const employee = document.getElementById('employeeName').value;
+        const idNumber = document.getElementById('idNumber').value;
         const empNo = document.getElementById('employeeNo').value;
         const position = document.getElementById('position').value;
         const payPeriod = document.getElementById('payPeriod').value;
@@ -631,7 +641,6 @@
         const totalDeductions = paye + uif + pension + medical;
         const netPay = grossPay - totalDeductions;
 
-        // Build payslip HTML
         const html = `
             <div class="payslip-header">
                 <div class="payslip-company">UPTOWN <span>TRADING 460 CC</span></div>
@@ -653,6 +662,10 @@
                     <span>${employee}</span>
                 </div>
                 <div class="info-item">
+                    <strong>ID Number</strong>
+                    <span>${idNumber}</span>
+                </div>
+                <div class="info-item">
                     <strong>Employee No.</strong>
                     <span>${empNo}</span>
                 </div>
@@ -668,10 +681,6 @@
                     <strong>Payment Date</strong>
                     <span>${paymentDate}</span>
                 </div>
-                <div class="info-item">
-                    <strong>Bank Account</strong>
-                    <span>****${bankAccount}</span>
-                </div>
             </div>
 
             <div class="payslip-section-title">Earnings</div>
@@ -684,9 +693,9 @@
                 </thead>
                 <tbody>
                     <tr><td>Basic Salary</td><td>${formatCurrency(basic)}</td></tr>
-                    ${overtime > 0 ? `<tr><td>Overtime</td><td>${formatCurrency(overtime)}</td></tr>` : ''}
-                    ${transport > 0 ? `<tr><td>Transport Allowance</td><td>${formatCurrency(transport)}</td></tr>` : ''}
-                    ${cellphone > 0 ? `<tr><td>Cellphone Allowance</td><td>${formatCurrency(cellphone)}</td></tr>` : ''}
+                    <tr><td>Overtime</td><td>${formatCurrency(overtime)}</td></tr>
+                    <tr><td>Transport Allowance</td><td>${formatCurrency(transport)}</td></tr>
+                    <tr><td>Cellphone Allowance</td><td>${formatCurrency(cellphone)}</td></tr>
                     <tr class="total-row"><td>GROSS PAY</td><td>${formatCurrency(grossPay)}</td></tr>
                 </tbody>
             </table>
@@ -700,10 +709,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    ${paye > 0 ? `<tr><td>PAYE (Income Tax)</td><td>${formatCurrency(paye)}</td></tr>` : ''}
-                    ${uif > 0 ? `<tr><td>UIF Contribution</td><td>${formatCurrency(uif)}</td></tr>` : ''}
-                    ${pension > 0 ? `<tr><td>Pension Fund</td><td>${formatCurrency(pension)}</td></tr>` : ''}
-                    ${medical > 0 ? `<tr><td>Medical Aid</td><td>${formatCurrency(medical)}</td></tr>` : ''}
+                    <tr><td>PAYE (Income Tax)</td><td>${formatCurrency(paye)}</td></tr>
+                    <tr><td>UIF Contribution</td><td>${formatCurrency(uif)}</td></tr>
+                    <tr><td>Pension Fund</td><td>${formatCurrency(pension)}</td></tr>
+                    <tr><td>Medical Aid</td><td>${formatCurrency(medical)}</td></tr>
                     <tr class="total-row"><td>TOTAL DEDUCTIONS</td><td>${formatCurrency(totalDeductions)}</td></tr>
                 </tbody>
             </table>
