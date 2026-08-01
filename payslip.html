@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payslip Generator | Uptown Trading 460 CC</title>
+    <meta name="description" content="Free Employee Payslip Generator - Create professional South African payslips instantly. Auto-calculates PAYE, UIF, Pension deductions.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --red: #C8202A;
+            --dark: #1A1A2E;
+            --gold: #D4AF37;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --border: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+            min-height: 100vh;
+            color: #333;
+            padding: 20px;
+        }
+
+        /* HEADER */
+        .top-nav {
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .top-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .top-nav a:hover {
+            background: var(--red);
+            border-color: var(--red);
+        }
+
+        .top-nav h1 {
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .top-nav h1 span { color: var(--red); }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 968px) {
+            .container { grid-template-columns: 1fr; }
+        }
+
+        /* FORM SIDE */
+        .form-panel {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .form-panel h2 {
+            color: var(--dark);
+            margin-bottom: 25px;
+            font-size: 24px;
+            font-weight: 800;
+            border-bottom: 3px solid var(--red);
+            padding-bottom: 12px;
+        }
+
+        .form-panel h2 i { color: var(--red); margin-right: 10px; }
+
+        .form-section {
+            margin-bottom: 25px;
+        }
+
+        .form-section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--dark);
+            font-size: 13px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--red);
+            box-shadow: 0 0 0 3px rgba(200, 32, 42, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-generate {
+            background: var(--red);
+            color: white;
+            margin-top: 10px;
+        }
+
+        .btn-generate:hover {
+            background: #A01822;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(200, 32, 42, 0.3);
+        }
+
+        .btn-print {
+            background: var(--dark);
+            color: white;
+            margin-top: 10px;
+        }
+
+        .btn-print:hover {
+            background: #000;
+        }
+
+        .btn-reset {
+            background: var(--gray);
+            color: white;
+            margin-top: 10px;
+        }
+
+        /* PAYSLIP OUTPUT */
+        .payslip-panel {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .payslip-header {
+            border-bottom: 4px double var(--dark);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .payslip-company {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .payslip-company span { color: var(--red); }
+
+        .payslip-tagline {
+            font-size: 11px;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .payslip-title {
+            background: var(--dark);
+            color: white;
+            padding: 8px 20px;
+            display: inline-block;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 2px;
+            border-radius: 4px;
+        }
+
+        .payslip-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: var(--light);
+            border-radius: 8px;
+            border-left: 4px solid var(--red);
+        }
+
+        .info-item {
+            font-size: 13px;
+        }
+
+        .info-item strong {
+            color: var(--dark);
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 3px;
+        }
+
+        .info-item span {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .payslip-section-title {
+            background: var(--dark);
+            color: white;
+            padding: 8px 15px;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .payslip-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .payslip-table th, .payslip-table td {
+            padding: 10px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+        }
+
+        .payslip-table th {
+            background: var(--light);
+            font-weight: 700;
+            color: var(--dark);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .payslip-table td:last-child, .payslip-table th:last-child {
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .total-row {
+            background: var(--light);
+            font-weight: 800 !important;
+            color: var(--dark);
+        }
+
+        .total-row td {
+            font-size: 14px !important;
+            padding: 12px 15px !important;
+        }
+
+        .net-pay-box {
+            background: linear-gradient(135deg, var(--red) 0%, #A01822 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(200, 32, 42, 0.3);
+        }
+
+        .net-pay-box .label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .net-pay-box .amount {
+            font-size: 32px;
+            font-weight: 900;
+        }
+
+        .payslip-footer {
+            border-top: 2px dashed var(--border);
+            padding-top: 15px;
+            margin-top: 20px;
+            font-size: 11px;
+            color: var(--gray);
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray);
+        }
+
+        .empty-state i {
+            font-size: 60px;
+            color: var(--border);
+            margin-bottom: 20px;
+        }
+
+        .empty-state p {
+            font-size: 14px;
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .top-nav, .form-panel, .btn { display: none !important; }
+            .container { display: block; }
+            .payslip-panel {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 20px;
+                max-width: 100%;
+            }
+        }
+
+        .info-badge {
+            background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-badge i { font-size: 18px; }
+    </style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<div class="top-nav">
+    <h1>UPTOWN <span>TRADING 460</span></h1>
+    <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Website</a>
+</div>
+
+<!-- MAIN GRID -->
+<div class="container">
+
+    <!-- FORM SIDE -->
+    <div class="form-panel">
+        <h2><i class="fas fa-file-invoice-dollar"></i> Payslip Generator</h2>
+
+        <div class="info-badge">
+            <i class="fas fa-info-circle"></i>
+            <span>Auto-calculates PAYE, UIF & Pension based on SA tax rules</span>
+        </div>
+
+        <!-- COMPANY INFO -->
+        <div class="form-section">
+            <div class="form-section-title"><i class="fas fa-building"></i> Company Details</div>
+            <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" id="companyName" value="Uptown-Trading 460 CC">
+            </div>
+            <div class="form-group">
+                <label>Company Registration</label>
+                <input type="text" id="companyReg" value="2005/011222/23">
+            </div>
+        </div>
+
+        <!-- EMPLOYEE INFO -->
+        <div class="form-section">
+            <div class="form-section-title"><i class="fas fa-user"></i> Employee Details</div>
+            <div class="form-group">
+                <label>Employee Name</label>
+                <input type="text" id="employeeName" value="Alex Cloete">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Employee Number</label>
+                    <input type="text" id="employeeNo" value="UT460-0027">
+                </div>
+                <div class="form-group">
+                    <label>ID Number (optional)</label>
+                    <input type="text" id="idNumber" placeholder="8001015009087">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Position</label>
+                <input type="text" id="position" value="Business Representative">
+            </div>
+        </div>
+
+        <!-- PAY PERIOD -->
+        <div class="form-section">
+            <div class="form-section-title"><i class="fas fa-calendar"></i> Pay Period</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Pay Period</label>
+                    <input type="text" id="payPeriod" value="July 2026">
+                </div>
+                <div class="form-group">
+                    <label>Payment Date</label>
+                    <input type="text" id="paymentDate" value="31 July 2026">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Bank Account (Last 4 digits)</label>
+                <input type="text" id="bankAccount" value="4028" maxlength="4">
+            </div>
+        </div>
+
+        <!-- EARNINGS -->
+        <div class="form-section">
+            <div class="form-section-title"><i class="fas fa-plus-circle"></i> Earnings (Rands)</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Basic Salary</label>
+                    <input type="number" id="basicSalary" value="11500" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label>Overtime</label>
+                    <input type="number" id="overtime" value="1200" step="0.01">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Transport Allowance</label>
+                    <input type="number" id="transport" value="850" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label>Cellphone Allowance</label>
+                    <input type="number" id="cellphone" value="450" step="0.01">
+                </div>
+            </div>
+        </div>
+
+        <!-- DEDUCTIONS -->
+        <div class="form-section">
+            <div class="form-section-title"><i class="fas fa-minus-circle"></i> Deductions (Rands)</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>PAYE (Tax)</label>
+                    <input type="number" id="paye" value="1320" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label>UIF (1%)</label>
+                    <input type="number" id="uif" value="140" step="0.01">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Pension Fund</label>
+                    <input type="number" id="pension" value="862.50" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label>Medical Aid</label>
+                    <input type="number" id="medical" value="550" step="0.01">
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-generate" onclick="generatePayslip()">
+            <i class="fas fa-magic"></i> Generate Payslip
+        </button>
+        <button class="btn btn-print" onclick="printPayslip()">
+            <i class="fas fa-print"></i> Print / Save as PDF
+        </button>
+        <button class="btn btn-reset" onclick="autoCalculate()">
+            <i class="fas fa-calculator"></i> Auto-Calculate Deductions
+        </button>
+    </div>
+
+    <!-- PAYSLIP OUTPUT -->
+    <div class="payslip-panel" id="payslipOutput">
+        <!-- Filled by JS -->
+    </div>
+
+</div>
+
+<script>
+    // Generate initial payslip on load
+    window.addEventListener('DOMContentLoaded', generatePayslip);
+
+    function formatCurrency(num) {
+        return 'R ' + parseFloat(num).toLocaleString('en-ZA', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+    }
+
+    function autoCalculate() {
+        const basic = parseFloat(document.getElementById('basicSalary').value) || 0;
+        const overtime = parseFloat(document.getElementById('overtime').value) || 0;
+        const transport = parseFloat(document.getElementById('transport').value) || 0;
+        const cellphone = parseFloat(document.getElementById('cellphone').value) || 0;
+
+        const grossPay = basic + overtime + transport + cellphone;
+
+        // SA 2024/2025 Tax calculation (simplified)
+        // Annual gross
+        const annualGross = grossPay * 12;
+        let annualTax = 0;
+
+        if (annualGross <= 237100) {
+            annualTax = annualGross * 0.18;
+        } else if (annualGross <= 370500) {
+            annualTax = 42678 + (annualGross - 237100) * 0.26;
+        } else if (annualGross <= 512800) {
+            annualTax = 77362 + (annualGross - 370500) * 0.31;
+        } else if (annualGross <= 673000) {
+            annualTax = 121475 + (annualGross - 512800) * 0.36;
+        } else {
+            annualTax = 179147 + (annualGross - 673000) * 0.39;
+        }
+
+        // Primary rebate
+        annualTax -= 17235;
+        if (annualTax < 0) annualTax = 0;
+
+        const monthlyPAYE = annualTax / 12;
+
+        // UIF - 1% of gross, max R177.12
+        let uif = grossPay * 0.01;
+        if (uif > 177.12) uif = 177.12;
+
+        // Pension - 7.5% of basic
+        const pensionCalc = basic * 0.075;
+
+        document.getElementById('paye').value = monthlyPAYE.toFixed(2);
+        document.getElementById('uif').value = uif.toFixed(2);
+        document.getElementById('pension').value = pensionCalc.toFixed(2);
+
+        generatePayslip();
+    }
+
+    function generatePayslip() {
+        // Get values
+        const company = document.getElementById('companyName').value;
+        const companyReg = document.getElementById('companyReg').value;
+        const employee = document.getElementById('employeeName').value;
+        const empNo = document.getElementById('employeeNo').value;
+        const idNumber = document.getElementById('idNumber').value;
+        const position = document.getElementById('position').value;
+        const payPeriod = document.getElementById('payPeriod').value;
+        const paymentDate = document.getElementById('paymentDate').value;
+        const bankAccount = document.getElementById('bankAccount').value;
+
+        const basic = parseFloat(document.getElementById('basicSalary').value) || 0;
+        const overtime = parseFloat(document.getElementById('overtime').value) || 0;
+        const transport = parseFloat(document.getElementById('transport').value) || 0;
+        const cellphone = parseFloat(document.getElementById('cellphone').value) || 0;
+
+        const paye = parseFloat(document.getElementById('paye').value) || 0;
+        const uif = parseFloat(document.getElementById('uif').value) || 0;
+        const pension = parseFloat(document.getElementById('pension').value) || 0;
+        const medical = parseFloat(document.getElementById('medical').value) || 0;
+
+        const grossPay = basic + overtime + transport + cellphone;
+        const totalDeductions = paye + uif + pension + medical;
+        const netPay = grossPay - totalDeductions;
+
+        // Build payslip HTML
+        const html = `
+            <div class="payslip-header">
+                <div class="payslip-company">UPTOWN <span>TRADING 460 CC</span></div>
+                <div class="payslip-tagline">Building South Africa's Future</div>
+                <div class="payslip-title">EMPLOYEE PAYSLIP</div>
+            </div>
+
+            <div class="payslip-info">
+                <div class="info-item">
+                    <strong>Company</strong>
+                    <span>${company}</span>
+                </div>
+                <div class="info-item">
+                    <strong>Reg No.</strong>
+                    <span>${companyReg}</span>
+                </div>
+                <div class="info-item">
+                    <strong>Employee Name</strong>
+                    <span>${employee}</span>
+                </div>
+                <div class="info-item">
+                    <strong>Employee No.</strong>
+                    <span>${empNo}</span>
+                </div>
+                <div class="info-item">
+                    <strong>Position</strong>
+                    <span>${position}</span>
+                </div>
+                ${idNumber ? `<div class="info-item"><strong>ID Number</strong><span>${idNumber}</span></div>` : ''}
+                <div class="info-item">
+                    <strong>Pay Period</strong>
+                    <span>${payPeriod}</span>
+                </div>
+                <div class="info-item">
+                    <strong>Payment Date</strong>
+                    <span>${paymentDate}</span>
+                </div>
+            </div>
+
+            <div class="payslip-section-title">Earnings</div>
+            <table class="payslip-table">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Basic Salary</td><td>${formatCurrency(basic)}</td></tr>
+                    ${overtime > 0 ? `<tr><td>Overtime</td><td>${formatCurrency(overtime)}</td></tr>` : ''}
+                    ${transport > 0 ? `<tr><td>Transport Allowance</td><td>${formatCurrency(transport)}</td></tr>` : ''}
+                    ${cellphone > 0 ? `<tr><td>Cellphone Allowance</td><td>${formatCurrency(cellphone)}</td></tr>` : ''}
+                    <tr class="total-row"><td>GROSS PAY</td><td>${formatCurrency(grossPay)}</td></tr>
+                </tbody>
+            </table>
+
+            <div class="payslip-section-title">Deductions</div>
+            <table class="payslip-table">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${paye > 0 ? `<tr><td>PAYE (Income Tax)</td><td>${formatCurrency(paye)}</td></tr>` : ''}
+                    ${uif > 0 ? `<tr><td>UIF Contribution</td><td>${formatCurrency(uif)}</td></tr>` : ''}
+                    ${pension > 0 ? `<tr><td>Pension Fund</td><td>${formatCurrency(pension)}</td></tr>` : ''}
+                    ${medical > 0 ? `<tr><td>Medical Aid</td><td>${formatCurrency(medical)}</td></tr>` : ''}
+                    <tr class="total-row"><td>TOTAL DEDUCTIONS</td><td>${formatCurrency(totalDeductions)}</td></tr>
+                </tbody>
+            </table>
+
+            <div class="net-pay-box">
+                <div class="label">Net Pay (Take Home)</div>
+                <div class="amount">${formatCurrency(netPay)}</div>
+            </div>
+
+            <div class="payslip-info" style="grid-template-columns: 1fr 1fr;">
+                <div class="info-item">
+                    <strong>Payment Method</strong>
+                    <span>EFT Bank Transfer</span>
+                </div>
+                <div class="info-item">
+                    <strong>Bank Account</strong>
+                    <span>****${bankAccount}</span>
+                </div>
+            </div>
+
+            <div class="payslip-footer">
+                This payslip is a computer-generated document and does not require a signature.<br>
+                <strong>${company}</strong> | Reg. ${companyReg}<br>
+                Portion 80, Doornkloof, Magaliesburg, 1791 | Level 1 B-BBEE | 100% Black Owned<br>
+                Tel: 083 527 5278 | Email: uptown.trading460@gmail.com
+            </div>
+        `;
+
+        document.getElementById('payslipOutput').innerHTML = html;
+    }
+
+    function printPayslip() {
+        window.print();
+    }
+</script>
+
+</body>
+</html>
