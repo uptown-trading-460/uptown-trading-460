@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /*payslip*
+
+Sitemap: https://uptowntrading460.github.io/uptown-trading-460/sitemap.xml
